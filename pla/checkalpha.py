@@ -69,7 +69,7 @@ def check_alpha_from_seed(group_seed,rolls,isalpha,set_gender,pfilter):
         encslotmin = 0
         encslotmax = 0
     else:
-        sp_slots = json.load(open(f"./static/resources/{pfilter['mapname']}.json"))
+        sp_slots = json.load(open(f"/home/cappy/pla-multi-checker-web/static/resources/{pfilter['mapname']}.json"))
         spawnerinfo = sp_slots.get(pfilter["spawner"],None)
         if spawnerinfo is None:
             encslotmin,encslotmax,encsum = 0,0,0
