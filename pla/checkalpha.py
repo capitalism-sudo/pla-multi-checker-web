@@ -3,10 +3,10 @@ import sys
 import json
 from .xoroshiro import XOROSHIRO
 
-with open("./static/resources/text_natures.txt",encoding="utf-8") as text_natures:
+with open("/home/pla-multi-checker-web/mysite/static/resources/text_natures.txt",encoding="utf-8") as text_natures:
     NATURES = text_natures.read().split("\n")
 
-with open("./static/resources/text_species_en.txt",encoding="utf-8") as text_species:
+with open("/home/pla-multi-checker-web/mysite/static/resources/text_species_en.txt",encoding="utf-8") as text_species:
     SPECIES = text_species.read().split("\n")
 
 def generate_from_seed(seed,rolls,guaranteed_ivs=0,set_gender=False):
