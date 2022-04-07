@@ -14,19 +14,19 @@ mapnamevals = {
     "5A1D":"Obsidian Fieldlands",
     "56B7":"Cobalt Coastlands"}
 
-encmap = json.load(open("/home/pla-multi-checker-web/mysite/static/resources/mmo_es.json"))
+encmap = json.load(open("/home/cappy/pla-multi-checker-web/static/resources/mmo_es.json"))
 
-allpaths = json.load(open("/home/pla-multi-checker-web/mysite/static/resources/mmopaths.json"))
+allpaths = json.load(open("/home/cappy/pla-multi-checker-web/static/resources/mmopaths.json"))
 
-nonbonuspaths = json.load(open("/home/pla-multi-checker-web/mysite/static/resources/nonbonuspaths.json"))
+nonbonuspaths = json.load(open("/home/cappy/pla-multi-checker-web/static/resources/nonbonuspaths.json"))
 
-with open("/home/pla-multi-checker-web/mysite/static/resources/text_natures.txt",encoding="utf-8") as text_natures:
+with open("/home/cappy/pla-multi-checker-web/static/resources/text_natures.txt",encoding="utf-8") as text_natures:
     NATURES = text_natures.read().split("\n")
 
-with open("/home/pla-multi-checker-web/mysite/static/resources/text_species_en.txt",encoding="utf-8") as text_species:
+with open("/home/cappy/pla-multi-checker-web/static/resources/text_species_en.txt",encoding="utf-8") as text_species:
     SPECIES = text_species.read().split("\n")
 
-RATIOS = json.load(open("/home/pla-multi-checker-web/mysite/static/resources/ratios.json"))
+RATIOS = json.load(open("/home/cappy/pla-multi-checker-web/static/resources/ratios.json"))
 
 extrapaths = [[],[1],[2],[2,1],[3],[3,1],[3,2],[3,2,1]]
 fixedgenders = ["Happiny", "Chansey", "Blissey", "Petilil", "Lilligant", "Bronzor", "Bronzong", "Voltorb", "Electrode", "Rotom", "Rufflet", "Braviary", "Unown"]
