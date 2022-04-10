@@ -91,7 +91,7 @@ def generate_mass_outbreak_aggressive_path(group_seed,rolls,paths,spawns,true_sp
             if not fixed_seed in uniques:
                 uniques.add(fixed_seed)
                 info = {
-                    "index":f"<span class='pla-results-init'>Init Spawn " \
+                    "index":f"<span class='pla-results-init'>Initial Spawn " \
                     f"{init_spawn} </span></span>",
                     "spawn":True,
                     "generator_seed":f"{generator_seed:X}",
@@ -489,13 +489,13 @@ def read_bonus_pathinfo(paths,rolls,group_seed,map_name,
                     display[index]["index"] = f"<span class='pla-results-firstpath'>" \
                                               f"First Round Path: " \
                                               f"{value} </span> + {extra} + " \
-                                              f"<span class='pla-results-bonus'> Bonus Round Path" \
+                                              f"<span class='pla-results-bonus'> Bonus Round " \
                                               + display[index]["index"]
                 else:
                     display[index]["index"] = f"<span class='pla-results-firstpath'>First Round Path: " \
                                               f"{value} </span> + <span class='pla-results-revisit'> " \
                                               f"Revisit {epath} </span> + <span class='pla-results-bonus'> " \
-                                              f"Bonus Round Path " \
+                                              f"Bonus Round " \
                                               + display[index]["index"]
                 display[index]["group"] = 0
                 display[index]["mapname"] = map_name
