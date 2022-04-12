@@ -141,7 +141,7 @@ def generate_mass_outbreak_aggressive_path(group_seed,rolls,paths,spawns,true_sp
                 fixed_seed = fixed_rng.next()
                 encryption_constant,pid,ivs,ability,gender,nature,shiny = \
                     generate_from_seed(fixed_seed,rolls,guaranteed_ivs,set_gender)
-                if not fixed_seed in uniques and (sum(steps[:step_i]) + pokemon + 4) <= true_spawns:
+                if not fixed_seed in uniques:
                     uniques.add(fixed_seed)
                     info = {
                     "index":f"Path: {'|'.join(str(s) for s in steps[:step_i] + [pokemon])} </span>",
