@@ -488,7 +488,7 @@ def read_bonus_pathinfo(paths,rolls,group_seed,map_name,
                 if epath == []:
                     display[index]["index"] = f"<span class='pla-results-firstpath'>" \
                                               f"First Round Path: " \
-                                              f"{value} </span> + {extra} + " \
+                                              f"{value} </span> + [Clear Remaining Spawns] + " \
                                               f"<span class='pla-results-bonus'> Bonus Round " \
                                               + display[index]["index"]
                 else:
