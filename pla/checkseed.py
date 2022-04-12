@@ -143,8 +143,13 @@ def generate_mass_outbreak_aggressive_path(group_seed,rolls,paths,spawns,true_sp
                     generate_from_seed(fixed_seed,rolls,guaranteed_ivs,set_gender)
                 if not fixed_seed in uniques:
                     uniques.add(fixed_seed)
+                    string = "Path: "
+                    for s in steps[:step_i]:
+                        string = string + f" D{s}, "
+                    string = string + f"D{pokemon}"
                     info = {
-                    "index":f"Path: {'|'.join(str(s) for s in steps[:step_i] + [pokemon])} </span>",
+                    #"index":f"Path: {'|'.join(str(s) for s in steps[:step_i] + [pokemon])} </span>",
+                    "index":string,
                     "spawn":True,
                     "generator_seed":f"{generator_seed:X}",
                     "species":species,
@@ -484,16 +489,23 @@ def read_bonus_pathinfo(paths,rolls,group_seed,map_name,
             else:
                 continue
             for index in display:
+                string = "["
+                for p,val in enumerate(value):
+                    if p != 0:
+                        string = string + f", D{val}"
+                    else:
+                        string = string + f"D{val}"
+                string = string + "]"
                 form = ''
                 if epath == []:
                     display[index]["index"] = f"<span class='pla-results-firstpath'>" \
                                               f"First Round Path: " \
-                                              f"{value} </span> + [Clear Remaining Spawns] + " \
+                                              f"{string} </span> + [Clear Remaining Spawns] + " \
                                               f"<span class='pla-results-bonus'> Bonus Round " \
                                               + display[index]["index"]
                 else:
                     display[index]["index"] = f"<span class='pla-results-firstpath'>First Round Path: " \
-                                              f"{value} </span> + <span class='pla-results-revisit'> " \
+                                              f"{string} </span> + <span class='pla-results-revisit'> " \
                                               f"Revisit {epath} </span> + <span class='pla-results-bonus'> " \
                                               f"Bonus Round " \
                                               + display[index]["index"]

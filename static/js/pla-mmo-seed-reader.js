@@ -374,6 +374,7 @@ const showFilteredResults = () => {
   );
 
   if (filteredResults.length > 0) {
+	resultsArea.innerHTML = "<h3>D = Despawn. Despawn Multiple Pokemon by either Multibattles (for aggressive) or Scaring (for skittish) pokemon.</h3>";  
     filteredResults.forEach((result) => {
 	  let sprite = document.createElement('img');
 	  sprite.src = "static/img/sprite/"+result.sprite;
