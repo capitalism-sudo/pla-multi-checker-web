@@ -40,7 +40,9 @@ def get_alpha_from_seed():
                                        request.json['filter'])
    return { "alpha_spawns": results }
 
-"""Debug code to run on PC
+"""
+#Debug code to run on PC
 if __name__ == '__main__':
     app.run(host="localhost", port=8200, debug=True)
 """
+

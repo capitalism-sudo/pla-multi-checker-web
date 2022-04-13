@@ -4,9 +4,11 @@ import json
 from .xoroshiro import XOROSHIRO
 
 with open("/home/cappy/pla-multi-checker-web/static/resources/text_natures.txt",encoding="utf-8") as text_natures:
+#with open("./static/resources/text_natures.txt",encoding="utf-8") as text_natures:
     NATURES = text_natures.read().split("\n")
 
 with open("/home/cappy/pla-multi-checker-web/static/resources/text_species_en.txt",encoding="utf-8") as text_species:
+#with open("./static/resources/text_species_en.txt",encoding="utf-8") as text_species:
     SPECIES = text_species.read().split("\n")
 
 def generate_from_seed(seed,rolls,guaranteed_ivs=0,set_gender=False):
@@ -70,6 +72,7 @@ def check_alpha_from_seed(group_seed,rolls,isalpha,set_gender,pfilter):
         encslotmax = 0
     else:
         sp_slots = json.load(open(f"/home/cappy/pla-multi-checker-web/static/resources/{pfilter['mapname']}.json"))
+        #sp_slots = json.load(open(f"./static/resources/{pfilter['mapname']}.json"))
         spawnerinfo = sp_slots.get(pfilter["spawner"],None)
         if spawnerinfo is None:
             encslotmin,encslotmax,encsum = 0,0,0

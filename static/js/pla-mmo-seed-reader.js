@@ -414,6 +414,8 @@ const showFilteredResults = () => {
       resultAlpha.classList.toggle("pla-result-true", result.alpha);
       resultAlpha.classList.toggle("pla-result-false", !result.alpha);
 
+	  resultContainer.querySelector("[data-pla-info-chains]").innerHTML =
+		result.chains;
       resultContainer.querySelector("[data-pla-results-nature]").innerText =
         result.nature;
       resultContainer.querySelector("[data-pla-results-gender]").innerHTML =
