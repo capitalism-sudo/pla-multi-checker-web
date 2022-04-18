@@ -78,7 +78,7 @@
 	{
 		"species": "Alpha Basculegion",
 		"hash": "0x542CF2BA871B9BBC",
-		"parent_id": "0x542CF4BA871B9F22",
+		"parent_id": "0xA37B2DA46ABBE8A6",
 		"allspecies": []
 	},
 	{
@@ -1410,7 +1410,7 @@
 	{
 		"species": "Basculegion",
 		"hash": "0x542CF4BA871B9F22",
-		"parent_id": "0",
+		"parent_id": "0xA37B2DA46ABBE8A6",
 		"allspecies": [
 			"Basculegion",
 			"Basculegion-1"
