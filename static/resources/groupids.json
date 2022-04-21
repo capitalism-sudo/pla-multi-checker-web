@@ -5,6 +5,21 @@
 		"parent_id": 0
 	},
 	{
+		"id": "183",
+		"name": "Obsidian Fieldlands Buneary/Psyduck",
+		"parent_id": 0
+	},
+	{
+		"id": "253",
+		"name": "Obsidian Fieldlands Shellos/Gastrodon (West Sea)",
+		"parent_id": 0
+	},
+	{
+		"id": "273",
+		"name": "Obsidian Fieldlands Abra/Kadabra",
+		"parent_id": 0
+	},
+	{
 		"id": "390",
 		"name": "Crimson Mirelands Combee",
 		"parent_id": 0
