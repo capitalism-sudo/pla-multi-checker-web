@@ -164,7 +164,7 @@ picture,
 video,
 canvas,
 svg {
-  display: block;
+  display: inline-block;
   max-width: 100%;
 }
 
@@ -435,6 +435,36 @@ input[type="text"]:focus-visible {
     rgba(var(--blue-1-rgb), 0.6),
     rgba(var(--blue-2-rgb), 0.6)
   );
+}
+
+.tab {
+	overflow: hidden;
+	border: 2px solid var(--brand);
+	background-color: transparent;
+}
+
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: 1px solid var(--brand);
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+}
+
+.tab button:hover {
+	background-color: rgba(var(--brand-rgb), 0.6);
+}
+
+.tab button.active {
+	background-color: rgba(var(--brand-rgb), 0.6);
+}
+
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border-top: none;
 }
 
 /* Action Button */
