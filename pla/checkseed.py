@@ -578,7 +578,7 @@ def read_bonus_pathinfo(paths,rolls,group_seed,map_name,
                                         display[index]["chains"].append(chained[chain])
                                     elif frbonuspath[len(frpath)-1] >= frpath[len(frpath)-1]:
                                         difference = frbonuspath[len(frpath)-1] - frpath[len(frpath)-1]
-                                        if remain < difference or difference == 0:
+                                        if remain > difference or difference == 0:
                                             print("Bonus Path > frpath, adding")
                                             display[index]["chains"].append(chained[chain])
                     if chained.get(chainstring, None) is not None:
