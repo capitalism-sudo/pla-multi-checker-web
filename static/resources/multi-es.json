@@ -77,6 +77,42 @@
                 "alpha":true
             }
 		],
+		"342": [
+            {
+                "slot":100,
+                "species":"Basculin-2",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Basculin-2",
+                "alpha":true
+            }
+		],
+		"344": [
+            {
+                "slot":100,
+                "species":"Basculin-2",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Basculin-2",
+                "alpha":true
+            }
+		],
+		"345": [
+            {
+                "slot":100,
+                "species":"Basculin-2",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Basculin-2",
+                "alpha":true
+            }
+		],
 		"390": [
             {
                 "slot":100,
@@ -154,5 +190,59 @@
                 "species":"Buneary",
                 "alpha":true
             }
-        ]	
+        ],
+		"50": [
+            {
+                "slot":40,
+                "species":"Ralts",
+                "alpha":false
+            },
+			{
+                "slot": 1,
+                "species":"Ralts",
+                "alpha":true
+            },
+            {
+                "slot":100,
+                "species":"Budew",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Budew",
+                "alpha":true
+            },
+			{
+                "slot":50,
+                "species":"Roselia",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Roselia",
+                "alpha":true
+            }
+        ],
+		"284": [
+            {
+                "slot":100,
+                "species":"Magikarp",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Magikarp",
+                "alpha":true
+            },
+            {
+                "slot":30,
+                "species":"Gyarados",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Gyarados",
+                "alpha":true
+            }
+        ]
 }

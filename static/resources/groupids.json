@@ -20,6 +20,16 @@
 		"parent_id": 0
 	},
 	{
+		"id": "284",
+		"name": "Obsidian Fieldlands Magikarp/Gyarados",
+		"parent_id": 0
+	},
+	{
+		"id": "50",
+		"name": "Crimson Mirelands Ralts/Budew/Roselia",
+		"parent_id": 0
+	},
+	{
 		"id": "390",
 		"name": "Crimson Mirelands Combee",
 		"parent_id": 0
@@ -27,6 +37,11 @@
 	{
 		"id": "367",
 		"name": "Crimson Mirelands Petilil",
+		"parent_id": 0
+	},
+	{
+		"id": "344",
+		"name": "Cobalt Coastlands Basculin",
 		"parent_id": 0
 	},
 	{
