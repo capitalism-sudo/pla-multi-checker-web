@@ -94,7 +94,6 @@ function setupPreferenceSaving() {
 }
 
 function updatevalue() {
-	console.log(mmoSpeciesText.value);
 	setFilter;
 }
 
@@ -261,7 +260,6 @@ const showFilteredResults = () => {
 	  sprite.src = "static/img/sprite/"+result.sprite;
 	  
 	  let pathdisplay = "Path To Target: &nbsp;";
-	  console.log(result.path);
 	  if (result.path.toString().includes("Initial")) {
 		  pathdisplay += "<input type='checkbox'>&nbsp;"+result.path;
 	  }
