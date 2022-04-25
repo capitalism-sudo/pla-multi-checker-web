@@ -2,23 +2,23 @@ import json
 
 from .xoroshiro import XOROSHIRO
 
-with open("/home/cappy/pla-multi-checker-web/static/resources/text_natures.txt",encoding="utf-8") as text_natures:
+with open("/home/pla-multi-checker-web/static/resources/text_natures.txt",encoding="utf-8") as text_natures:
 #with open("./static/resources/text_natures.txt",encoding="utf-8") as text_natures:
     NATURES = text_natures.read().split("\n")
 
-with open("/home/cappy/pla-multi-checker-web/static/resources/text_species_en.txt",encoding="utf-8") as text_species:
+with open("/home/pla-multi-checker-web/static/resources/text_species_en.txt",encoding="utf-8") as text_species:
 #with open("./static/resources/text_species_en.txt",encoding="utf-8") as text_species:
     SPECIES = text_species.read().split("\n")
 
-RATIOS = json.load(open("/home/cappy/pla-multi-checker-web/static/resources/ratios.json"))
+RATIOS = json.load(open("/home/pla-multi-checker-web/static/resources/ratios.json"))
 #RATIOS = json.load(open("./static/resources/ratios.json"))
 
-encounter_table = json.load(open("/home/cappy/pla-multi-checker-web/static/resources/multi-es.json"))
+encounter_table = json.load(open("/home/pla-multi-checker-web/static/resources/multi-es.json"))
 #encounter_table = json.load(open("./static/resources/multi-es.json"))
 
 SPAWNER_PTR = "[[main+42a6ee0]+330]"
 
-fixedgenders = ["Happiny", "Chansey", "Blissey", "Petilil", "Lilligant", "Bronzor", "Bronzong", "Voltorb", "Electrode", "Rotom", "Rufflet", "Braviary", "Unown","Basculin"]
+fixedgenders = ["Happiny", "Chansey", "Blissey", "Petilil", "Lilligant", "Bronzor", "Bronzong", "Voltorb", "Electrode", "Rotom", "Rufflet", "Braviary", "Unown","Basculin-2"]
 
 
 def generate_from_seed(seed,rolls,guaranteed_ivs=0,set_gender=False):
@@ -214,7 +214,7 @@ def check_multi_spawner_seed(group_seed,rolls,group_id,maxalive,maxdepth):
         display[index]["sprite"] = spritename
         ratioarray = RATIOS[str(SPECIES.index(cutspecies))]
         ratio = ratioarray[2]
-        if display[index]["gender"] < ratio and cutspecies not in ["Bronzor", "Bronzong", "Rotom", "Voltorb", "Electrode", "Unown"]:
+        if display[index]["gender"] < ratio and cutspecies not in ["Bronzor", "Bronzong", "Rotom", "Voltorb", "Electrode", "Unown","Basculin"]:
             display[index]["gender"] = "Female <i class='fa-solid fa-venus' style='color:pink'></i>"
         elif cutspecies in ["Basculin"]:
             display[index]["gender"] = "Male <i class='fa-solid fa-mars' style='color:blue'></i>"
