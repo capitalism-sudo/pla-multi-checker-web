@@ -21,6 +21,39 @@
                 "alpha":true
             }
         ],
+		"49n": [
+            {
+                "slot":100,
+                "species":"Bidoof",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Bidoof",
+                "alpha":true
+            },
+			{
+                "slot":80,
+                "species":"Drifloon",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Drifloon",
+                "alpha":true
+            },
+            {
+                "slot":20,
+                "species":"Eevee",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Eevee",
+                "alpha":true
+            }
+			
+        ],
 		"253": [
             {
                 "slot":100,
@@ -65,6 +98,38 @@
                 "alpha":true
             }
         ],
+		"273n": [
+            {
+                "slot":100,
+                "species":"Abra",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Abra",
+                "alpha":true
+            },
+            {
+                "slot":30,
+                "species":"Kadabra",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Kadabra",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Drifblim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+        ],
 		"389": [
             {
                 "slot":100,
@@ -74,6 +139,38 @@
             {
                 "slot":2,
                 "species":"Combee",
+                "alpha":true
+            }
+		],
+		"389n": [
+            {
+                "slot":50,
+                "species":"Combee",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Combee",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Zubat",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Zubat",
+                "alpha":true
+            },
+			{
+                "slot":60,
+                "species":"Golbat",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Golbat",
                 "alpha":true
             }
 		],
@@ -134,6 +231,38 @@
             {
                 "slot":2,
                 "species":"Petilil",
+                "alpha":true
+            }
+		],
+		"367n": [
+            {
+                "slot":100,
+                "species":"Petilil",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Petilil",
+                "alpha":true
+            },
+			{
+                "slot":50,
+                "species":"Gastly",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Gastly",
+                "alpha":true
+            },
+			{
+                "slot":30,
+                "species":"Haunter",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Haunter",
                 "alpha":true
             }
 		],

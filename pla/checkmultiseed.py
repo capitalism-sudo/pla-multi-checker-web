@@ -18,7 +18,7 @@ encounter_table = json.load(open("/home/cappy/pla-multi-checker-web/static/resou
 
 SPAWNER_PTR = "[[main+42a6ee0]+330]"
 
-fixedgenders = ["Happiny", "Chansey", "Blissey", "Petilil", "Lilligant", "Bronzor", "Bronzong", "Voltorb", "Electrode", "Rotom", "Rufflet", "Braviary", "Unown"]
+fixedgenders = ["Happiny", "Chansey", "Blissey", "Petilil", "Lilligant", "Bronzor", "Bronzong", "Voltorb", "Electrode", "Rotom", "Rufflet", "Braviary", "Unown","Basculin"]
 
 
 def generate_from_seed(seed,rolls,guaranteed_ivs=0,set_gender=False):
@@ -52,20 +52,6 @@ def generate_from_seed(seed,rolls,guaranteed_ivs=0,set_gender=False):
     nature = rng.rand(25)
     return ec,pid,ivs,ability,gender,nature,shiny,square
 
-def read_mass_outbreak_rng(group_seed,rolls,remain):
-    main_rng = XOROSHIRO(group_seed)
-    for respawn in range(0,remain):
-        generator_seed = respawn_rng.next()
-        respawn_rng.next() # spawner 1's seed, unused
-        respawn_rng = XOROSHIRO(respawn_rng.next())
-        fixed_rng = XOROSHIRO(generator_seed)
-        encounter_slot = (fixed_rng.next() / (2**64)) * encsum
-        fixed_seed = fixed_rng.next()
-        ec,pid,ivs,ability,gender,nature,shiny,square = generate_from_seed(fixed_seed,rolls)
-        if shiny and encounter_slot > 122:
-            print(f"{generator_seed:X} Advance {advance} Respawn {respawn} EC: {ec:08X} PID: {pid:08X} {'/'.join(str(iv) for iv in ivs)}")
-            return True
-    return False
 
 def multi(group_seed,rolls,group_id,maxalive,maxdepth=5):
     path = []
@@ -230,6 +216,8 @@ def check_multi_spawner_seed(group_seed,rolls,group_id,maxalive,maxdepth):
         ratio = ratioarray[2]
         if display[index]["gender"] < ratio and cutspecies not in ["Bronzor", "Bronzong", "Rotom", "Voltorb", "Electrode", "Unown"]:
             display[index]["gender"] = "Female <i class='fa-solid fa-venus' style='color:pink'></i>"
+        elif cutspecies in ["Basculin"]:
+            display[index]["gender"] = "Male <i class='fa-solid fa-mars' style='color:blue'></i>"
         elif cutspecies in ["Bronzor", "Bronzong", "Rotom", "Voltorb", "Electrode","Unown"]:
             display[index]["gender"] = "Genderless <i class='fa-solid fa-genderless'></i>"
         else:
