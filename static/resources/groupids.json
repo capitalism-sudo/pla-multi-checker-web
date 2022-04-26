@@ -5,6 +5,31 @@
 		"parent_id": 0
 	},
 	{
+		"id": "25",
+		"name": "Obsidian Fieldlands Bidoof",
+		"parent_id": 0
+	},
+	{
+		"id": "33",
+		"name": "Obsidian Fieldlands Shinx",
+		"parent_id": 0
+	},
+	{
+		"id": "35",
+		"name": "Obsidian Fieldlands Buizel",
+		"parent_id": 0
+	},
+	{
+		"id": "85",
+		"name": "Obsidian Fieldlands Geodude",
+		"parent_id": 0
+	},
+	{
+		"id": "129",
+		"name": "Obsidian Fieldlands Pikachu/Pichu/Kricketot",
+		"parent_id": 0
+	},
+	{
 		"id": "183",
 		"name": "Obsidian Fieldlands Buneary/Psyduck",
 		"parent_id": 0
