@@ -46,7 +46,7 @@ def get_alpha_from_seed():
 
 @app.route('/check-multi-seed', methods=['POST'])
 def check_multiseed():
-   results = pla.check_multi_spawner_seed(request.json['seed'], request.json['rolls'], request.json['group_id'], request.json['maxalive'],request.json['maxdepth'])
+   results = pla.check_multi_spawner_seed(request.json['seed'], request.json['rolls'], request.json['group_id'], request.json['maxalive'],request.json['maxdepth'],request.json['isnight'])
 
    return { "multi_spawns": results}
 

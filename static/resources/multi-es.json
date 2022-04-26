@@ -142,6 +142,18 @@
                 "alpha":true
             }
 		],
+		"396": [
+            {
+                "slot":100,
+                "species":"Basculin-2",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Basculin-2",
+                "alpha":true
+            }
+		],
 		"389n": [
             {
                 "slot":50,
@@ -219,6 +231,38 @@
             {
                 "slot":2,
                 "species":"Combee",
+                "alpha":true
+            }
+		],
+		"390n": [
+            {
+                "slot":50,
+                "species":"Combee",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Combee",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Zubat",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Zubat",
+                "alpha":true
+            },
+			{
+                "slot":60,
+                "species":"Golbat",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Golbat",
                 "alpha":true
             }
 		],

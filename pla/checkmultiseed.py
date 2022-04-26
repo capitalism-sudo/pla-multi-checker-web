@@ -187,7 +187,12 @@ def get_encounter_slot_sum(group_id):
 
     return encsum
 
-def check_multi_spawner_seed(group_seed,rolls,group_id,maxalive,maxdepth):
+def check_multi_spawner_seed(group_seed,rolls,group_id,maxalive,maxdepth,isnight):
+
+    if isnight and encounter_table.get(f"{group_id}"+"n") is not None:
+        print("Night check is ok")
+        group_id = f"{group_id}" + "n"
+        print(f"Group ID: {group_id}")
 
     group_seed = int(group_seed)
     display,_ = multi(group_seed,rolls,group_id,maxalive,maxdepth)
@@ -223,4 +228,9 @@ def check_multi_spawner_seed(group_seed,rolls,group_id,maxalive,maxdepth):
         else:
             display[index]["gender"] = "Male <i class='fa-solid fa-mars' style='color:blue'></i>"
 
-    return display
+    sorted_display = sorted(display.items(), key=lambda x: x[1]["adv"])
+    sorted_dict = {}
+    for key,value in enumerate(sorted_display):
+        sorted_dict[key] = value[1]
+        
+    return sorted_dict
