@@ -1,115 +1,22 @@
 {% extends "base/base-sidebar.html" %}
 
-{% block title %}Multi Seed Checker{% endblock %}
+{% block title %}Multi Checker{% endblock %}
 
 {% block head %}
-	<script type="module" src="static/js/jquery.min.mjs"></script>
-	<script type="module">
-	$(document).ready(function(e){
-		console.log("ready!")
-
-		function get_json_data(id, parent_id) {
-			console.log('#' + id)
-			var html_code = '';
-			$.getJSON('static/resources/groupids.json', function(data) {
-				console.log(id)
-				html_code += '<option value="49">Select Spawner:</option>';
-				$.each(data, function(key, value) {
-					console.log("Value.parent_id");
-					console.log(value.parent_id);
-					if (value.parent_id == parent_id) {
-						html_code += '<option value="' + value.id + '">' + value.name + '</option>';
-					}
-				});
-				$('#' + id).html(html_code);
-			});
-		}
-		
-		get_json_data('groupID',0);
-	});
-	</script>
 	<script src="https://kit.fontawesome.com/acd232d529.js" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block main %}
-<section class="pla-section-results">
-    <div data-pla-messages></div>
-	
-    <div class="tab">
-		<button class="tablinks" id="defaultOpen" data-pla-tab-for="Results">Results</button>
-		<button class="tablinks" data-pla-tab-for="Maps">Spawner Maps</button>
-	</div>
-	
-	<div id="Results" class="tabcontent">
+    <section class="pla-section-results">
+        <div data-pla-messages></div>
         <div class="pla-results" data-pla-results>
-            Search to begin
+            <p class="pla-results-message">Search to begin</p>
         </div>
-	</div>
-	
-	<div id="Maps" class="tabcontent">
-		<section class="pla-section-spawnmap">
-		    <h3>Currently Supported Spawnpoints:</h3>
-		
-			<button type="button" class="pla-button expandable-control">Obsidian Fieldlands</button>
-			<div class="expandable">
-			<ul class="pla-results-ul">
-				<li><img src="static/img/spawnpoint-eevee.png"></li>
-				<li><img src="static/img/spawnpoint-buneary.png"></li>
-			</ul>
-			<ul class="pla-results-ul">
-				<li><img src="static/img/spawnpoint-shellos.png"></li>
-				<li><img src="static/img/spawnpoint-abra.png"></li>
-			</ul>
-			<ul class="pla-results-ul">
-				<li><img src="static/img/spawnpoint-magikarp.png"></li>
-				<li><img src="static/img/spawnpoint-shinx.png"></li>
-			</ul>
-			<ul class="pla-results-ul">
-				<li><img src="static/img/spawnpoint-buizel.png"></li>
-				<li><img src="static/img/spawnpoint-geodude.png"></li>
-			</ul>
-			<ul class="pla-results-ul">
-				<li><img src="static/img/spawnpoint-pichu.png"></li>
-			</ul>
-			</div>
-			
-			<button type="button" class="pla-button expandable-control">Crimson Mirelands</button>
-			<div class="expandable">
-			<ul class="pla-results-ul">
-				<li><img src="static/img/spawnpoint-combee.png"></li>
-				<li><img src="static/img/spawnpoint-petilil.png"></li>
-			</ul>
-			<ul class="pla-results-ul">
-				<li><img src="static/img/spawnpoint-budew.png"></li>
-			</ul>
-			</div>
-			
-			<button type="button" class="pla-button expandable-control">Cobalt Coastlands</button>
-			<div class="expandable">
-			<ul class="pla-results-ul">
-				<li><img src="static/img/spawnpoint-basculin.png"></li>
-			</ul>
-			</div>
-			
-			<button type="button" class="pla-button expandable-control">Alabaster Icelands</button>
-			<div class="expandable">
-                <ul class="pla-results-ul">
-                    <li><img src="static/img/spawnpoint-swinub.png"></li>
-                </ul>
-			</div>
-		</section>
-	</div>
     </section>
 {% endblock %}
 
 {% block sidebar %}
     <section class="pla-section-options">
-	
-		<div class="pla-control">
-            <label for="inputseed">Seed</label>
-            <input type="text" id="inputseed" placeholder="Input Seed">
-        </div>
-		
         <div class="pla-control">
             <label for="maxDepth">Max Number of Advances:</label>
             <select id="maxDepth">
@@ -140,22 +47,15 @@
 			</select>
 		</div>
 		
-		<!--<div class="pla-control">
+		<div class="pla-control">
 			<label for="groupID">Group ID:</label>
 			<input type="text" id="groupID">
-		</div>-->
-		
-		<div class="pla-control">
-			<label for="groupID">Select Spawner:</label>
-			<select name="groupID" id="groupID" class="form-control">
-				<option value="49">Select Spawn Point</option>
-			</select>
 		</div>
 		
 		<div class="pla-control">
 			<label for="nightToggle">Check Night Spawns:</label>
 			<input type="checkbox" id="nightToggle">
-		</div>
+		</div
 
         <div class="pla-control-spaced">
             <label for="mmoShinyFilter">Shiny or Alpha</label>
@@ -184,7 +84,7 @@
         </div>-->
         
         <div class="pla-control-actions">
-            <button class="pla-button pla-button-action" id="pla-button-checkmultiseed">Check Multi Spawner</button>
+            <button class="pla-button pla-button-action" id="pla-button-checkmulti">Check Multi Spawner</button>
         </div>
     </section>
 
@@ -254,5 +154,5 @@
 {% endblock %}
 
 {% block script %}
-    <script type="module" src="{{ url_for('static', filename='js/multiseed.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/multis.js') }}"></script>
 {% endblock %}

@@ -1,7 +1,11 @@
 import signal
 import json
+import mimetypes
 from flask import Flask, render_template, request
 import pla
+
+mimetypes.add_type('application/javascript', '.js')
+mimetypes.add_type('application/javascript', '.js')
 
 app = Flask(__name__)
 
