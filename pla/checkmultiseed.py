@@ -125,7 +125,8 @@ def generate_spawns(group_seed,rolls,group_id,info,path,adv):
             "species":species,
             "alpha":alpha,
             "path":(path[:len(path)-1] + [i+1]),
-            "adv":adv
+            "adv":adv,
+            "encvalue": encounter_slot / encsum
         }
         info[str(currpath)] = poke
     group_seed = main_rng.next()
@@ -165,7 +166,8 @@ def generate_initial_spawns(group_seed,rolls,group_id,maxalive,info):
             "species":species,
             "alpha":alpha,
             "path":f"Initial {i}",
-            "adv":0
+            "adv":0,
+            "encvalue": encounter_slot / encsum
         }
         currpath = f"Initial {i}"
         info[str(currpath)] = poke
