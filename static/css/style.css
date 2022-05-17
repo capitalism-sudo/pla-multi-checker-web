@@ -986,3 +986,7 @@ section.pla-section-expandable {
     transform: rotate(360deg);
   }
 }
+
+.pla-results-details p {
+  margin-left: var(--spacing3);
+}

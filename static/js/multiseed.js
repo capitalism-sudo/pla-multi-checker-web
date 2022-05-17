@@ -338,7 +338,7 @@ function showFilteredResults() {
       resultContainer.querySelector("[data-pla-results-ivs-spe]").innerText =
         result.ivs[5];
 
-      resultContainer.querySelector("[data-pla-results-encvalue]").textContent = Number(result.encvalue).toFixed(2)
+      resultContainer.querySelector("[data-pla-results-encvalue]").textContent = Number(result.encvalue).toFixed(4)
 
       showPokemonInformation(resultContainer, result);
 
