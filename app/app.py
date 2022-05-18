@@ -11,5 +11,5 @@ _resources = {
     AppMode.DEV: './static/'
 }
 
-APP_MODE = AppMode.LOCAL
+APP_MODE = AppMode.WEB
 RESOURCE_PATH = _resources[APP_MODE]

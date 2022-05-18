@@ -2,5 +2,7 @@
     "IP": "192.168.1.63",
 	"USB": false,
 	"SeedCheckOnly": false,
-	"FILTER_ON_SERVER": true
+	"FILTER_ON_SERVER": true,
+	"SECRET_KEY": "yHMzkvmqjcosFng9cvpNz66ddskFNLUH",
+	"SQLALCHEMY_DATABASE_URI": "sqlite:///site.db"
 }
