@@ -1,9 +1,9 @@
 import json
 from ast import literal_eval
-from app import RESOURCE_PATH
-from pla.core import BASE_ROLLS, generate_from_seed, get_rolls, get_sprite
-from pla.data import pokedex, natures
-from pla.rng import XOROSHIRO
+from ..app import RESOURCE_PATH
+from .core import BASE_ROLLS, generate_from_seed, get_rolls, get_sprite
+from .data import pokedex, natures
+from .rng import XOROSHIRO
 
 distortions = json.load(open(RESOURCE_PATH + "resources/distortions.json"))
 

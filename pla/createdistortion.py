@@ -1,4 +1,4 @@
-from app import APP_MODE, AppMode
+from ..app import APP_MODE, AppMode
 from time import sleep
 
 def create_distortion(reader):
