@@ -17,7 +17,7 @@ app = Flask(__name__)
 # Set max size for uploads
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1000 * 1000
 
-config = json.load(open("config.json"))
+config = json.load(open("/home/pla-multi-checker-web/config.json"))
 
 if config["SeedCheckOnly"]:
     print("Seed Check only mode! Note: You will not be able to use MMO checker or Distiortion Checker!")
