@@ -1,5 +1,5 @@
 from flask import request
-import ..pla
+from ..pla import *
 
 def legacy_get_from_seed():
     try:
