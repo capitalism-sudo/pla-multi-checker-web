@@ -1,4 +1,4 @@
-from app import RESOURCE_PATH
+from ...app import RESOURCE_PATH
 from .pokedex import Pokedex
 
 pokedex = Pokedex()
