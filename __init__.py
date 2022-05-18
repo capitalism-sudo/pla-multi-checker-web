@@ -3,7 +3,6 @@ import json
 import mimetypes
 
 from flask import Flask, render_template, request
-from nxreader import NXReader
 import pla
 from pla.core import get_sprite, teleport_to_spawn
 from pla.data import hisuidex
@@ -22,14 +21,6 @@ config = json.load(open("config.json"))
 
 if config["SeedCheckOnly"]:
     print("Seed Check only mode! Note: You will not be able to use MMO checker or Distiortion Checker!")
-else:
-    reader = NXReader(config["IP"], usb_connection=config["USB"])
-    
-    def signal_handler(signal, advances): #CTRL+C handler
-        print("Stop request")
-        reader.close()
-        
-        signal.signal(signal.SIGINT, signal_handler)
 
 @app.route("/")
 def home():
@@ -65,41 +56,6 @@ def settings():
 
 
 # API ROUTES
-@app.route('/api/read-mmos', methods=['POST'])
-def read_mmos():
-    results = pla.get_all_map_mmos(reader, request.json['research'], False)
-    return { "results": flatten_all_map_mmo_results(results, config.get('FILTER_ON_SERVER', False)) }
-
-@app.route('/api/read-mmos-one-map', methods=['POST'])
-def read_one_map():
-    results = pla.get_map_mmos(reader,request.json['mapname'],request.json['research'], False)
-    return { "results": flatten_map_mmo_results(results, config.get('FILTER_ON_SERVER', False)) }
-
-@app.route('/api/read-outbreaks', methods=['POST'])
-def read_normals():
-    results = pla.get_all_outbreaks(reader,request.json['research'], False)
-    return { "results": flatten_normal_outbreaks(results, config.get('FILTER_ON_SERVER', False)) }
-
-@app.route('/api/read-mmo-map-info', methods=['GET'])
-def read_maps():
-    map_names = pla.get_all_map_names(reader)
-    outbreaks = pla.get_all_outbreak_names(reader,False)
-    return { "maps": map_names, "outbreaks": outbreaks }
-
-@app.route('/api/teleport-to-spawn', methods=['POST'])
-def teleport():
-    teleport_to_spawn(reader, request.json['coords'])
-    return ""
-
-@app.route('/api/read-distortions', methods=['POST'])
-def read_distortions():
-    results = pla.check_all_distortions(reader, request.json['map_name'], request.json['research'])
-    return { "results": results }
-
-@app.route('/api/create-distortion', methods=['POST'])
-def create_distortion():
-    pla.create_distortion(reader)
-    return { "results": "Distortion Created"}
 
 @app.route('/api/read-distortion-map-info', methods=['POST'])
 def get_map_info():
@@ -137,16 +93,6 @@ def get_alpha_from_seed():
                                         request.json['setgender'],
                                         request.json['filter'])
     return { "results": results }
-
-@app.route('/api/check-multi-spawn', methods=['POST'])
-def check_multispawner():
-    results = pla.check_multi_spawner(reader,
-                                      request.json['research'],
-                                      request.json['group_id'],
-                                      request.json['maxalive'],
-                                      request.json['maxdepth'],
-                                      request.json['isnight'])
-    return { "results": flatten_multi(results, config.get('FILTER_ON_SERVER', False)) }
 
 @app.route('/api/check-multi-seed', methods=['POST'])
 def check_multiseed():
