@@ -1,8 +1,8 @@
 import json
 from ..app import RESOURCE_PATH
-from core import BASE_ROLLS, generate_from_seed, get_rolls, get_sprite
-from data import pokedex, natures
-from rng import XOROSHIRO
+from .core import BASE_ROLLS, generate_from_seed, get_rolls, get_sprite
+from .data import pokedex, natures
+from .rng import XOROSHIRO
 
 encounter_table = json.load(open(RESOURCE_PATH + "resources/multi-es.json"))
 
