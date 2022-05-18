@@ -1,25 +1,19 @@
 import {
-  DEFAULT_MAP,
-  MESSAGE_ERROR,
-  MESSAGE_INFO,
-  showMessage,
-  showModalMessage,
-  clearMessages,
-  clearModalMessages,
+  doSearch,
   showNoResultsFound,
   saveIntToStorage,
   readIntFromStorage,
   saveBoolToStorage,
   readBoolFromStorage,
   setupExpandables,
+  showPokemonIVs,
   showPokemonInformation,
+  showPokemonGender,
+  initializeApp,
 } from "./modules/common.mjs";
 
 const resultTemplate = document.querySelector("[data-pla-results-template]");
 const resultsArea = document.querySelector("[data-pla-results]");
-const spinnerTemplate = document.querySelector("[data-pla-spinner]");
-
-const resultsSection = document.querySelector(".pla-section-results");
 const mapSpawnsArea = document.querySelector("[data-pla-info-spawner]");
 
 // options
@@ -42,6 +36,7 @@ dayNight.addEventListener("change", setSpawners);
 const checkAlphaAdvButton = document.getElementById("pla-button-checkalphaadv");
 checkAlphaAdvButton.addEventListener("click", checkAlphaAdv);
 
+initializeApp("spawns");
 loadPreferences();
 setupPreferenceSaving();
 setupExpandables();
@@ -134,82 +129,36 @@ function getOptions() {
 }
 
 function checkAlphaAdv() {
-  const options = getOptions();
-  showFetchingResults();
-
-  fetch("/check-alphaseed", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(options),
-  })
-    .then((response) => response.json())
-    .then((res) => showResults(res))
-    .catch((error) => showMessage(MESSAGE_ERROR, error));
-}
-
-function showFetchingResults() {
-  results.length = 0;
-  resultsArea.innerHTML = "";
-  const spinner = spinnerTemplate.content.cloneNode(true);
-  resultsArea.appendChild(spinner);
-  resultsSection.classList.toggle("pla-loading", true);
-}
-
-function showResults({ alpha_spawns }) {
-  if (alpha_spawns.spawn) {
-    results.push(alpha_spawns);
-  }
-  showFilteredResults();
+  doSearch("/api/check-alphaseed", results, getOptions(), showFilteredResults);
 }
 
 function showFilteredResults() {
-  resultsArea.innerHTML = "";
-  resultsSection.classList.toggle("pla-loading", false);
-
   if (results.length > 0) {
-    results.forEach((result) => {
-      console.log(results);
-
-      const resultContainer = resultTemplate.content.cloneNode(true);
-
-      let sprite = document.createElement("img");
-      sprite.src = "static/img/sprite/" + result.sprite;
-
-      resultContainer.querySelector(".pla-results-sprite").appendChild(sprite);
-      resultContainer.querySelector("[data-pla-results-species]").innerText =
-        result.species;
-
-      let resultGender = "Genderless";
-
-      if (result.gender < parseInt(genderFilter.value)) {
-        resultGender = "Female";
-      } else if (parseInt(genderFilter.value) != -1) {
-        resultGender = "Male";
-      }
-
-      resultContainer.querySelector("[data-pla-results-adv]").innerText =
-        result.adv;
-      resultContainer.querySelector("[data-pla-results-nature]").innerText =
-        result.nature;
-      resultContainer.querySelector("[data-pla-results-gender]").innerText =
-        resultGender;
-      resultContainer.querySelector("[data-pla-results-ivs-hp]").innerText =
-        result.ivs[0];
-      resultContainer.querySelector("[data-pla-results-ivs-att]").innerText =
-        result.ivs[1];
-      resultContainer.querySelector("[data-pla-results-ivs-def]").innerText =
-        result.ivs[2];
-      resultContainer.querySelector("[data-pla-results-ivs-spa]").innerText =
-        result.ivs[3];
-      resultContainer.querySelector("[data-pla-results-ivs-spd]").innerText =
-        result.ivs[4];
-      resultContainer.querySelector("[data-pla-results-ivs-spe]").innerText =
-        result.ivs[5];
-
-      showPokemonInformation(resultContainer, result);
-      resultsArea.appendChild(resultContainer);
-    });
+    resultsArea.innerHTML = "";
+    results.forEach((result) => showResult(result));
   } else {
     showNoResultsFound();
   }
+}
+
+function showResult(result) {
+  const resultContainer = resultTemplate.content.cloneNode(true);
+
+  resultContainer.querySelector("[data-pla-results-adv]").innerText =
+    result.adv;
+
+  showPokemonInformation(resultContainer, result);
+  showPokemonIVs(resultContainer, result);
+
+  // Overwrite Gender Display
+  let genderValue = genderFilter.value;
+  let resultGender = "GENDERLESS";
+  if (result.gender < genderValue) {
+    resultGender = "FEMALE";
+  } else if (genderValue != -1) {
+    resultGender = "MALE";
+  }
+  showPokemonGender(resultContainer, resultGender);
+
+  resultsArea.appendChild(resultContainer);
 }

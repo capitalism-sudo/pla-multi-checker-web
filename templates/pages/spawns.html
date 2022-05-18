@@ -3,7 +3,7 @@
 {% block title %}Spawn Checker{% endblock %}
 
 {% block head %}
-	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.mjs') }}"></script>
+	<script type="text/javascript" src="static/js/jquery.min.mjs"></script>
 	<script>
 	$(document).ready(function(e){
 		console.log("ready!")
@@ -109,7 +109,7 @@
 				<option value="127">1 &#9792; : 1 &#9794;</option>
 				<option value="191">3 &#9792; : 1 &#9794;</option>
 				<option value="0"> &#9794; Only</option>
-				<option value="255"> &#9792; Only</option>
+				<option value="254"> &#9792; Only</option>
 				<option value="-1"> Genderless</option>
 			</select>
 		</div>
@@ -171,6 +171,11 @@
 				<li class="pla-results-sprite" data-pla-results-sprite></li>
 				<li class="pla-results-species" data-pla-results-species></li>
             </ul>
+			
+			<ul class="pla-results-ul">
+				<li><span class="pla-results-label">Shiny:</span> <span class="float -left" data-pla-results-shinysprite><span class="float -right" data-pla-results-shiny></span></span></li>
+				<li><span class="pla-results-label">Alpha:</span> <span data-pla-results-alpha></span></li>
+			</ul>
 
 			<ul class="pla-results-ul">
 				<li><span class="pla-results-adv">Advances To Shiny:</span> <span data-pla-results-adv></span></li>
