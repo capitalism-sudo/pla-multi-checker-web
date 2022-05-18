@@ -149,6 +149,7 @@ def read_savefile():
     
     return { 'error': 'There was a problem reading your save' }
 
+"""
 # Legacy routes used by bots
 from .app.legacy import *
 app.add_url_rule('/check-mmoseed', view_func=legacy.legacy_get_from_seed)
@@ -157,3 +158,4 @@ app.add_url_rule('/check-multi-seed', view_func=legacy.legacy_check_multiseed)
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8100, debug=True)
+"""
