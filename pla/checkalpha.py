@@ -1,42 +1,18 @@
-# Go to root of PyNXReader
-import sys
 import json
-from .xoroshiro import XOROSHIRO
+from app import RESOURCE_PATH
+from pla.core import generate_from_seed, get_sprite
+from pla.data import pokedex, natures
+from pla.rng import XOROSHIRO
 
-with open("/home/pla-multi-checker-web/static/resources/text_natures.txt",encoding="utf-8") as text_natures:
-#with open("./static/resources/text_natures.txt",encoding="utf-8") as text_natures:
-    NATURES = text_natures.read().split("\n")
 
-with open("/home/pla-multi-checker-web/static/resources/text_species_en.txt",encoding="utf-8") as text_species:
-#with open("./static/resources/text_species_en.txt",encoding="utf-8") as text_species:
-    SPECIES = text_species.read().split("\n")
-
-def generate_from_seed(seed,rolls,guaranteed_ivs=0,set_gender=False):
-    rng = XOROSHIRO(seed)
-    ec = rng.rand(0xFFFFFFFF)
-    sidtid = rng.rand(0xFFFFFFFF)
-    for _ in range(rolls):
-        pid = rng.rand(0xFFFFFFFF)
-        shiny = ((pid >> 16) ^ (sidtid >> 16) \
-            ^ (pid & 0xFFFF) ^ (sidtid & 0xFFFF)) < 0x10
-        if shiny:
-            break
-    ivs = [-1,-1,-1,-1,-1,-1]
-    for i in range(guaranteed_ivs):
-        index = rng.rand(6)
-        while ivs[index] != -1:
-            index = rng.rand(6)
-        ivs[index] = 31
-    for i in range(6):
-        if ivs[i] == -1:
-            ivs[i] = rng.rand(32)
-    ability = rng.rand(2) # rand(3) if ha possible
-    if set_gender:
-        gender = -1
-    else:
-        gender = rng.rand(252) + 1
-    nature = rng.rand(25)
-    return ec,pid,ivs,ability,gender,nature,shiny
+# given the size of the json, it might be more efficient to ultimately put this in a database
+# load the encounter slots for a map, caching the results for future requests
+encslot_cache = {}
+def load_encounter_slots(mapname):
+    if mapname not in encslot_cache:
+        with open(f"{RESOURCE_PATH}resources/{mapname}.json", 'r') as encfile:
+            encslot_cache[mapname] = json.load(encfile)
+    return encslot_cache[mapname]
 
 def slot_to_pokemon(values,slot):
     """Compare slot to list of slots to find pokemon"""
@@ -71,8 +47,7 @@ def check_alpha_from_seed(group_seed,rolls,isalpha,set_gender,pfilter):
         encslotmin = 0
         encslotmax = 0
     else:
-        sp_slots = json.load(open(f"/home/pla-multi-checker-web/static/resources/{pfilter['mapname']}.json"))
-        #sp_slots = json.load(open(f"./static/resources/{pfilter['mapname']}.json"))
+        sp_slots = load_encounter_slots(pfilter["mapname"])
         spawnerinfo = sp_slots.get(pfilter["spawner"],None)
         if spawnerinfo is None:
             encslotmin,encslotmax,encsum = 0,0,0
@@ -90,7 +65,7 @@ def check_alpha_from_seed(group_seed,rolls,isalpha,set_gender,pfilter):
         encslot = (rng.next() / (2**64)) * encsum
         #print(f"Encslot: {encslot}")
         fixed_seed = rng.next()
-        ec,pid,ivs,ability,gender,nature,shiny = \
+        ec,pid,ivs,ability,gender,nature,shiny,square = \
             generate_from_seed(fixed_seed,rolls,guaranteed_ivs,set_gender)
         if shiny and encslot <= encslotmax and encslot >= encslotmin:
             break
@@ -100,44 +75,30 @@ def check_alpha_from_seed(group_seed,rolls,isalpha,set_gender,pfilter):
         main_rng.next()
         main_rng = XOROSHIRO(main_rng.next())
 
-    form = ''
-    if encslotmax is 0 or encsum is 0:
-        cutspecies = "Egg"
-    elif "Alpha" in pfilter["species"] and "-" in pfilter["species"]:
-        cutspecies = pfilter["species"].rpartition('Alpha')[2]
-        form = pfilter["species"].rpartition('-')[2]
-        cutspecies = cutspecies.rpartition('-')[0]     
-    elif "Alpha" in pfilter["species"]:
-        cutspecies = pfilter["species"].rpartition('Alpha')[2]
-    elif "-" in pfilter["species"]:
-        cutspecies = pfilter["species"].rpartition('-')[0]
-        form = pfilter["species"].rpartition('-')[2]
-    elif pfilter["species"] != "":
-        cutspecies = pfilter["species"]
-    else:
-        cutspecies = "Egg"
-
     if adv <= 50000:
-        results = {
-            "spawn": True,
+        pokemon, alpha = get_pokemon_alpha(pfilter["species"], encslotmax, encsum)
+        species = pokemon.display_name() if pokemon is not None else ''
+        sprite = get_sprite(pokemon, shiny) if pokemon is not None else 'c_0.png'
+
+        return [{
+            "rolls": rolls,
             "adv": adv,
             "ivs": ivs,
             "gender": gender,
-            "nature": NATURES[nature],
-            "sprite": f"c_{SPECIES.index(cutspecies)}" + f"{f'-{form}' if len(form) != 0 else ''}s.png",
-            "species": pfilter["species"]
-            }
+            "nature": natures(nature),
+            "sprite": sprite,
+            "species": species,
+            "shiny": shiny,
+            "square": square,
+            "alpha": alpha
+        }]
+     
+    return []
+
+def get_pokemon_alpha(species, encslotmax, encsum):
+    if species == "" or encslotmax == 0 or encsum == 0:
+        return None, False
+    if species[0:5] == "Alpha":
+        return pokedex.entry(species[5:].strip()), True
     else:
-        results = {
-            "spawn": True,
-            "adv": adv,
-            "ivs": [0,0,0,0,0,0],
-            "gender": -1,
-            "nature": "N/A",
-            "sprite": "c_0.png",
-            "species": "Not Found Within 50,000 advances"
-            }
-
-    return results
-
-
+        return pokedex.entry(species), False

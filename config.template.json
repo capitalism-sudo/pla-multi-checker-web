@@ -1,17 +1,6 @@
 {
-    "DiscordBotPrefix": "$",
-    "DiscordToken": "",
-    "EnableDebugLogging": "False",
-    "EventNotificationChannelIdForShiny": "",
-    "EventNotificationChannelIdForBrilliant": "",
-    "EventNotificationChannelIdForMark": "",
-    "EventNotificationChannelIdForRareMark": "",
     "IP": "192.168.1.63",
 	"USB": false,
 	"SeedCheckOnly": false,
-    "NotificationChannelForInfo": "",
-    "TextNotificationChannelIdForShiny": "",
-    "TextNotificationChannelIdForBrilliant": "",
-    "TextNotificationChannelIdForMark": "",
-    "TextNotificationChannelIdForRareMark": ""
+	"FILTER_ON_SERVER": true
 }

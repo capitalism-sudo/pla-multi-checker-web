@@ -3,8 +3,8 @@ import {
   MESSAGE_INFO,
   showMessage,
   showModalMessage,
-  clearMessages,
   clearModalMessages,
+  initializeApp,
 } from "./modules/common.mjs";
 
 // valid PLA save file sizes
@@ -22,6 +22,12 @@ const fileUpload = document.getElementById("pla-research-selectsave");
 let hisuidex = [];
 const researchRows = new Map();
 const researchRadios = new Map();
+
+initializeApp("settings");
+loadPreferences();
+setupPreferenceSaving();
+loadPokedex();
+
 // Save and load user preferences
 function loadPreferences() {
   // Here for future proofing - not currently used
@@ -30,6 +36,7 @@ function loadPreferences() {
 function setupPreferenceSaving() {
   // Here for future proofing - not currently used
 }
+
 // This runs on page load and wires the javascript up to the page once the pokedex data has loaded
 function loadPokedex() {
   fetch("/api/hisuidex")
@@ -37,7 +44,7 @@ function loadPokedex() {
     .then((res) => {
       hisuidex = res.hisuidex;
 
-      initialisePage();
+      initializePage();
     })
     .catch((error) => {
       showMessage(
@@ -47,14 +54,11 @@ function loadPokedex() {
     });
 }
 
-loadPreferences();
-setupPreferenceSaving();
-loadPokedex();
-
 // The function that actually wires up the page
-function initialisePage() {
+function initializePage() {
   // create the table for for each pokemon in the hisui dex
   hisuidex.forEach((pokemon) => createPokemonRow(pokemon));
+  researchTable.addEventListener("change", saveResearch);
 
   // the button that sets all research to base level
   document
@@ -70,7 +74,7 @@ function initialisePage() {
 
   // the button that sets all research to level 10 (+1 roll)
   document
-    .getElementById("pla-research-set-level10")
+    .getElementById("pla-research-set-complete")
     .addEventListener("click", () => {
       for (const [_, radios] of researchRadios) {
         radios[0].checked = false;
@@ -93,7 +97,7 @@ function initialisePage() {
     });
 
   // the input that filters the list of pokemon
-  filterInput.addEventListener("keyup", (e) => {
+  filterInput.addEventListener("input", (e) => {
     const filterText = e.target.value.toLowerCase();
     for (const [name, row] of researchRows) {
       row.classList.toggle(
@@ -127,48 +131,23 @@ function initialisePage() {
 
 function createPokemonRow(pokemon) {
   const row = rowTemplate.content.cloneNode(true);
-  row.querySelector(".pla-research-row-name").textContent = pokemon.name;
-  row.querySelector("[data-pla-research-row-img]").src = getSpriteSrc(pokemon);
+  row.querySelector(".pla-research-row-name").textContent = pokemon.species;
+  row.querySelector(
+    "[data-pla-research-row-img]"
+  ).src = `/static/img/sprite/${pokemon.sprite}`;
   let radios = row.querySelectorAll(".pla-research-radio");
 
   radios[0].name = pokemon.id;
   radios[1].name = pokemon.id;
   radios[2].name = pokemon.id;
 
-  radios[0].addEventListener("change", saveResearch);
-  radios[1].addEventListener("change", saveResearch);
-  radios[2].addEventListener("change", saveResearch);
+  // radios[0].addEventListener("change", saveResearch);
+  // radios[1].addEventListener("change", saveResearch);
+  // radios[2].addEventListener("change", saveResearch);
 
-  researchRows.set(pokemon.name, row.querySelector(".pla-research-row"));
-  researchRadios.set(pokemon.name, [radios[0], radios[1], radios[2]]);
+  researchRows.set(pokemon.species, row.querySelector(".pla-research-row"));
+  researchRadios.set(pokemon.species, [radios[0], radios[1], radios[2]]);
   researchTable.appendChild(row);
-}
-
-// This is an ugly (temporary?) hack
-const hisuiFormSprites = {
-  Decidueye: "-1",
-  Typhlosion: "-1",
-  Samurott: "-1",
-  Qwilfish: "-1",
-  Lilligant: "-1",
-  Sliggoo: "-1",
-  Goodra: "-1",
-  Growlithe: "-1",
-  Arcanine: "-1",
-  Basculin: "-2",
-  Voltorb: "-1",
-  Electrode: "-1",
-  Avalugg: "-1",
-  Zorua: "-1",
-  Zoroark: "-1",
-  Braviary: "-1",
-};
-function getSpriteSrc(pokemon) {
-  return `/static/img/sprite/c_${pokemon.dex_national}${
-    hisuiFormSprites.hasOwnProperty(pokemon.name)
-      ? hisuiFormSprites[pokemon.name]
-      : ""
-  }.png`;
 }
 
 // select a save file to upload, doing some basic checking
@@ -255,8 +234,8 @@ function saveResearch() {
   research["rolls"] = {};
 
   hisuidex.forEach((pokemon) => {
-    research["rolls"][pokemon.name] = getRadioValue(
-      researchRadios.get(pokemon.name)
+    research["rolls"][pokemon.species] = getRadioValue(
+      researchRadios.get(pokemon.species)
     );
   });
 
