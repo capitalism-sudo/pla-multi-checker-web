@@ -1,10 +1,10 @@
 import json
 import struct
 from datetime import datetime
-from app import RESOURCE_PATH
-from pla.core import BASE_ROLLS_MMOS, generate_from_seed, get_rolls, get_sprite
-from pla.data import pokedex, natures
-from pla.rng import XOROSHIRO
+from ..app import RESOURCE_PATH
+from .pla.core import BASE_ROLLS_MMOS, generate_from_seed, get_rolls, get_sprite
+from .pla.data import pokedex, natures
+from .pla.rng import XOROSHIRO
 
 MAX_MAPS = 5
 MAX_MMOS = 16
