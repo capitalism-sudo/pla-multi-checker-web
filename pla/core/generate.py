@@ -1,4 +1,4 @@
-from pla.rng import XOROSHIRO
+from ..rng import XOROSHIRO
 
 def generate_from_seed(seed, rolls, guaranteed_ivs=0, fixed_gender=False):
     rng = XOROSHIRO(seed)

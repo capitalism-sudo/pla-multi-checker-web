@@ -1,5 +1,5 @@
 import json
-from pla.filters import is_shiny
+from ..filters import is_shiny
 
 # These are utility functions for understanding PLA data that are not generally used in the app
 map_names = ['AlabasterIcelands', 'CobaltCoastlands', 'CoronetHighlands', 'CrimsonMirelands', 'ObsidianFieldlands']

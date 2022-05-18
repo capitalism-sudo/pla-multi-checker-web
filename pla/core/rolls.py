@@ -1,4 +1,4 @@
-from pla.data.pokedex import DexEntry
+from ..data.pokedex import DexEntry
 
 BASE_ROLLS = 1
 BASE_ROLLS_OUTBREAKS = 26

@@ -1,6 +1,6 @@
 import json
 from dataclasses import dataclass
-from app import RESOURCE_PATH
+from ...app import RESOURCE_PATH
 from .gender import Gender
 
 
