@@ -4,10 +4,10 @@ import mimetypes
 
 from flask import Flask, render_template, request
 from .pla import *
-from pla.core import get_sprite, teleport_to_spawn
-from pla.data import hisuidex
-from pla.saves import read_research, rolls_from_research
-from pla.data.data_utils import flatten_all_map_mmo_results, flatten_map_mmo_results, flatten_normal_outbreaks, flatten_multi
+from .pla.core import get_sprite, teleport_to_spawn
+from .pla.data import hisuidex
+from .pla.saves import read_research, rolls_from_research
+from .pla.data.data_utils import flatten_all_map_mmo_results, flatten_map_mmo_results, flatten_normal_outbreaks, flatten_multi
 
 mimetypes.add_type('application/javascript', '.js')
 mimetypes.add_type('application/javascript', '.mjs')
