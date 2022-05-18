@@ -3,7 +3,7 @@ import json
 import mimetypes
 
 from flask import Flask, render_template, request
-import pla
+import .pla
 from pla.core import get_sprite, teleport_to_spawn
 from pla.data import hisuidex
 from pla.saves import read_research, rolls_from_research
