@@ -31,14 +31,14 @@ const nightCheck = document.getElementById("nightToggle");
 
 // filters
 const distSelectFilter = document.getElementById("selectfilter");
-const distShinyOrAlphaCheckbox = document.getElementById(
-  "mmoShinyOrAlphaFilter"
-);
+//const distShinyOrAlphaCheckbox = document.getElementById(
+//  "mmoShinyOrAlphaFilter"
+//);
 const distShinyCheckbox = document.getElementById("mmoShinyFilter");
 const distAlphaCheckbox = document.getElementById("mmoAlphaFilter");
 const mmoSpeciesText = document.getElementById("mmoSpeciesFilter");
 
-distShinyOrAlphaCheckbox.addEventListener("change", setFilter);
+//distShinyOrAlphaCheckbox.addEventListener("change", setFilter);
 distShinyCheckbox.addEventListener("change", setFilter);
 distAlphaCheckbox.addEventListener("change", setFilter);
 mmoSpeciesText.addEventListener("input", setFilter);
@@ -64,10 +64,10 @@ function loadPreferences() {
   distAlphaCheckbox.checked = readBoolFromStorage("mmoAlphaFilter", false);
   distShinyCheckbox.checked = readBoolFromStorage("mmoShinyFilter", false);
   nightCheck.checked = readBoolFromStorage("nightToggle");
-  distShinyOrAlphaCheckbox.checked = readBoolFromStorage(
+  /*distShinyOrAlphaCheckbox.checked = readBoolFromStorage(
     "mmoShinyOrAlphaFilter",
     false
-  );
+  );*/
   validateFilters();
 }
 
@@ -81,9 +81,9 @@ function setupPreferenceSaving() {
   distShinyCheckbox.addEventListener("change", (e) =>
     saveBoolToStorage("mmoShinyFilter", e.target.checked)
   );
-  distShinyOrAlphaCheckbox.addEventListener("change", (e) =>
+  /*distShinyOrAlphaCheckbox.addEventListener("change", (e) =>
     saveBoolToStorage("mmoShinyOrAlpaFilter", e.target.checked)
-  );
+  );*/
   nightCheck.addEventListener("change", (e) =>
     saveBoolToStorage("nightCheck", e.target.checked)
   );
@@ -116,10 +116,10 @@ function openTab(evt, tabName) {
 
 function setFilter(event) {
   if (event.target.checked) {
-    if (event.target == distShinyOrAlphaCheckbox) {
+    /*if (event.target == distShinyOrAlphaCheckbox) {
       distShinyCheckbox.checked = false;
       distAlphaCheckbox.checked = false;
-    }
+    }*/
     if (event.target == distShinyCheckbox) {
       distShinyOrAlphaCheckbox.checked = false;
     }
@@ -152,14 +152,12 @@ function validateFilters() {
 
 function filter(
   result,
-  shinyOrAlphaFilter,
   shinyFilter,
   alphaFilter,
-  speciesFilter
 ) {
-  if (shinyOrAlphaFilter && !(result.shiny || result.alpha)) {
+  /*if (shinyOrAlphaFilter && !(result.shiny || result.alpha)) {
     return false;
-  }
+  }*/
 
   if (shinyFilter && !result.shiny) {
     return false;
@@ -169,12 +167,12 @@ function filter(
     return false;
   }
 
-  if (
+  /*if (
     speciesFilter.length != 0 &&
     !result.species.toLowerCase().includes(speciesFilter.toLowerCase())
   ) {
     return false;
-  }
+  }*/
 
   return true;
 }
@@ -204,13 +202,13 @@ function checkMultiSeed() {
 function showFilteredResults() {
   validateFilters();
 
-  let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
+  //let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
   let shinyFilter = distShinyCheckbox.checked;
   let alphaFilter = distAlphaCheckbox.checked;
-  let speciesFilter = mmoSpeciesText.value;
+  //let speciesFilter = mmoSpeciesText.value;
 
   const filteredResults = results.filter((result) =>
-    filter(result, shinyOrAlphaFilter, shinyFilter, alphaFilter, speciesFilter)
+    filter(result, shinyFilter, alphaFilter)
   );
 
   if (filteredResults.length > 0) {
