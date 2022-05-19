@@ -70,6 +70,8 @@ def get_from_seed():
     except ValueError:
         return { "error": "You need to input a number for the seed" }
     
+    filter_command = filter_commands.get(request.json['filter'], is_shiny)
+    
     results = pla.check_mmo_from_seed(group_seed,
                                   request.json['research'],
                                   request.json['frencounter'],
@@ -78,7 +80,7 @@ def get_from_seed():
                                   request.json['frspawns'],
                                   request.json['brspawns'])
     print(request.json['research'])
-    return { "results": flatten_map_mmo_results(results, config.get('FILTER_ON_SERVER', False)) }
+    return { "results": flatten_map_mmo_results(results, config.get('FILTER_ON_SERVER', False), filter_command) }
 
 @app.route('/api/check-alphaseed', methods=['POST'])
 def get_alpha_from_seed():

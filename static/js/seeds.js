@@ -22,6 +22,7 @@ const frEncounter = document.querySelector("#frpokemon");
 const brEncounter = document.querySelector("#brpokemon");
 
 // filters
+const distSelectFilter = document.getElementById("selectfilter");
 const distShinyOrAlphaCheckbox = document.getElementById(
   "mmoShinyOrAlphaFilter"
 );
@@ -30,7 +31,7 @@ const distAlphaCheckbox = document.getElementById("mmoAlphaFilter");
 const distDefaultCheckbox = document.getElementById("mmoDefaultRouteFilter");
 const distMultiCheckbox = document.getElementById("mmoMultiFilter");
 
-distShinyOrAlphaCheckbox.addEventListener("change", setFilter);
+//distShinyOrAlphaCheckbox.addEventListener("change", setFilter);
 distShinyCheckbox.addEventListener("change", setFilter);
 distAlphaCheckbox.addEventListener("change", setFilter);
 distDefaultCheckbox.addEventListener("change", setFilter);
@@ -49,10 +50,10 @@ const results = [];
 function loadPreferences() {
   distAlphaCheckbox.checked = readBoolFromStorage("mmoAlphaFilter", false);
   distShinyCheckbox.checked = readBoolFromStorage("mmoShinyFilter", false);
-  distShinyOrAlphaCheckbox.checked = readBoolFromStorage(
+  /*distShinyOrAlphaCheckbox.checked = readBoolFromStorage(
     "mmoShinyOrAlphaFilter",
     false
-  );
+  );*/
   distDefaultCheckbox.checked = readBoolFromStorage(
     "mmoDefaultRouteFilter",
     false
@@ -60,7 +61,7 @@ function loadPreferences() {
   frSpawns.value = readIntFromStorage("frspawns", 1);
   brSpawns.value = readIntFromStorage("brspawns", 1);
   bonusCheckbox.checked = readBoolFromStorage("bonus", false);
-  validateFilters();
+  //validateFilters();
 }
 
 function setupPreferenceSaving() {
@@ -70,9 +71,9 @@ function setupPreferenceSaving() {
   distShinyCheckbox.addEventListener("change", (e) =>
     saveBoolToStorage("mmoShinyFilter", e.target.checked)
   );
-  distShinyOrAlphaCheckbox.addEventListener("change", (e) =>
+  /*distShinyOrAlphaCheckbox.addEventListener("change", (e) =>
     saveBoolToStorage("mmoShinyOrAlpaFilter", e.target.checked)
-  );
+  );*/
   frSpawns.addEventListener("change", (e) =>
     saveIntToStorage("frspawns", e.target.value)
   );
@@ -86,15 +87,15 @@ function setupPreferenceSaving() {
 
 function setFilter(event) {
   if (event.target.checked) {
-    if (event.target == distShinyOrAlphaCheckbox) {
+    /*if (event.target == distShinyOrAlphaCheckbox) {
       distShinyCheckbox.checked = false;
       distAlphaCheckbox.checked = false;
-    }
+    }*/
     if (event.target == distShinyCheckbox) {
-      distShinyOrAlphaCheckbox.checked = false;
+      //distShinyOrAlphaCheckbox.checked = false;
     }
     if (event.target == distAlphaCheckbox) {
-      distShinyOrAlphaCheckbox.checked = false;
+      //distShinyOrAlphaCheckbox.checked = false;
     }
   }
 
@@ -102,11 +103,11 @@ function setFilter(event) {
 }
 
 function validateFilters() {
-  let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
+  //let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
   let shinyFilter = distShinyCheckbox.checked;
   let alphaFilter = distAlphaCheckbox.checked;
 
-  if (shinyOrAlphaFilter) {
+  /*if (shinyOrAlphaFilter) {
     shinyFilter = false;
     alphaFilter = false;
   }
@@ -115,22 +116,21 @@ function validateFilters() {
     shinyOrAlphaFilter = false;
   }
 
-  distShinyOrAlphaCheckbox.checked = shinyOrAlphaFilter;
+  distShinyOrAlphaCheckbox.checked = shinyOrAlphaFilter;*/
   distShinyCheckbox.checked = shinyFilter;
   distAlphaCheckbox.checked = alphaFilter;
 }
 
 function filter(
   result,
-  shinyOrAlphaFilter,
   shinyFilter,
   alphaFilter,
   defaultFilter,
   multiFilter
 ) {
-  if (shinyOrAlphaFilter && !(result.shiny || result.alpha)) {
+  /*if (shinyOrAlphaFilter && !(result.shiny || result.alpha)) {
     return false;
-  }
+  }*/
 
   if (shinyFilter && !result.shiny) {
     return false;
@@ -159,6 +159,7 @@ function getOptions() {
     isbonus: bonusCheckbox.checked,
     frencounter: frEncounter.value,
     brencounter: brEncounter.value,
+	filter: distSelectFilter.value,
     //	inmap: inmapCheck.checked
   };
 }
@@ -174,9 +175,9 @@ function checkMMOs() {
 }
 
 function showFilteredResults() {
-  validateFilters();
+  //validateFilters();
 
-  let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
+  //let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
   let shinyFilter = distShinyCheckbox.checked;
   let alphaFilter = distAlphaCheckbox.checked;
   let defaultFilter = distDefaultCheckbox.checked;
@@ -185,7 +186,6 @@ function showFilteredResults() {
   const filteredResults = results.filter((result) =>
     filter(
       result,
-      shinyOrAlphaFilter,
       shinyFilter,
       alphaFilter,
       defaultFilter,
