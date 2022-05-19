@@ -121,10 +121,10 @@ function setFilter(event) {
       distAlphaCheckbox.checked = false;
     }*/
     if (event.target == distShinyCheckbox) {
-      distShinyOrAlphaCheckbox.checked = false;
+      //distShinyOrAlphaCheckbox.checked = false;
     }
     if (event.target == distAlphaCheckbox) {
-      distShinyOrAlphaCheckbox.checked = false;
+      //distShinyOrAlphaCheckbox.checked = false;
     }
   }
 
