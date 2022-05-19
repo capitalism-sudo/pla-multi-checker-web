@@ -68,7 +68,7 @@ function loadPreferences() {
     "mmoShinyOrAlphaFilter",
     false
   );*/
-  validateFilters();
+  //validateFilters();
 }
 
 function setupPreferenceSaving() {
@@ -132,22 +132,22 @@ function setFilter(event) {
 }
 
 function validateFilters() {
-  /*let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
+  //let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
   let shinyFilter = distShinyCheckbox.checked;
   let alphaFilter = distAlphaCheckbox.checked;
 
-  if (shinyOrAlphaFilter) {
+  /*if (shinyOrAlphaFilter) {
     shinyFilter = false;
     alphaFilter = false;
-  }
+  }*/
 
-  if (shinyFilter || alphaFilter) {
+  /*if (shinyFilter || alphaFilter) {
     shinyOrAlphaFilter = false;
-  }
+  }*/
 
-  distShinyOrAlphaCheckbox.checked = shinyOrAlphaFilter;
+  //distShinyOrAlphaCheckbox.checked = shinyOrAlphaFilter;
   distShinyCheckbox.checked = shinyFilter;
-  distAlphaCheckbox.checked = alphaFilter;*/
+  distAlphaCheckbox.checked = alphaFilter;
 }
 
 function filter(
@@ -200,7 +200,7 @@ function checkMultiSeed() {
 }
 
 function showFilteredResults() {
-  validateFilters();
+  //validateFilters();
 
   //let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
   let shinyFilter = distShinyCheckbox.checked;
