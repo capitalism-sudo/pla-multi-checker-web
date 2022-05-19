@@ -132,7 +132,7 @@ function setFilter(event) {
 }
 
 function validateFilters() {
-  let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
+  /*let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
   let shinyFilter = distShinyCheckbox.checked;
   let alphaFilter = distAlphaCheckbox.checked;
 
@@ -147,7 +147,7 @@ function validateFilters() {
 
   distShinyOrAlphaCheckbox.checked = shinyOrAlphaFilter;
   distShinyCheckbox.checked = shinyFilter;
-  distAlphaCheckbox.checked = alphaFilter;
+  distAlphaCheckbox.checked = alphaFilter;*/
 }
 
 function filter(
