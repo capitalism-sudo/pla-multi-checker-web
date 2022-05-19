@@ -41,7 +41,7 @@ const mmoSpeciesText = document.getElementById("mmoSpeciesFilter");
 //distShinyOrAlphaCheckbox.addEventListener("change", setFilter);
 distShinyCheckbox.addEventListener("change", setFilter);
 distAlphaCheckbox.addEventListener("change", setFilter);
-mmoSpeciesText.addEventListener("input", setFilter);
+//mmoSpeciesText.addEventListener("input", setFilter);
 
 // actions
 const checkMultiButton = document.getElementById("pla-button-checkmultiseed");
