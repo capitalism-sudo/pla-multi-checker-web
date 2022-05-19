@@ -27,13 +27,6 @@ def home():
     return render_template('index.html')
 
 @app.route("/mmos")
-def mmo_checker():
-    return render_template('pages/mmos.html', title='MMO Checker')
-
-@app.route("/distortions")
-def distortion():
-    return render_template('pages/distortions.html', title='Distortion Checker')
-
 @app.route("/seeds")
 def seed():
     return render_template('pages/seeds.html', title='MMO Checker')
@@ -43,9 +36,6 @@ def alpha():
     return render_template('pages/spawns.html', title='Spawn Checker')
 
 @app.route("/multis")
-def multi():
-    return render_template('pages/multis.html', title='Multi Spawn Checker')
-
 @app.route("/multiseed")
 def multiseed():
     return render_template('pages/multiseed.html', title='Multi Spawn Seed Checker')
