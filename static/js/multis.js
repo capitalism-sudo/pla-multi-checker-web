@@ -19,6 +19,7 @@ const groupID = document.getElementById("groupID");
 const nightCheck = document.getElementById("nightToggle");
 
 // filters
+const distSelectFilter = document.getElementById("selectfilter");
 const distShinyOrAlphaCheckbox = document.getElementById(
   "mmoShinyOrAlphaFilter"
 );
@@ -143,6 +144,7 @@ function getOptions() {
     group_id: parseInt(groupID.value),
     maxalive: parseInt(maxAlive.value),
     isnight: nightCheck.checked,
+	filter: distSelectFilter.value,
     //	inmap: inmapCheck.checked
   };
 }

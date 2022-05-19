@@ -24,6 +24,9 @@ def no_speed(pokemon):
 
 def num_perfect_ivs(pokemon):
     return sum(1 for iv in pokemon['ivs'] if iv == 31)
+
+def num_30plus_ivs(pokemon):
+    return sum(1 for iv in pokemon['ivs'] if iv >= 30)
     
 def has_3ivs(pokemon):
     return num_perfect_ivs(pokemon) >= 3
@@ -33,3 +36,15 @@ def has_4ivs(pokemon):
     
 def has_5ivs(pokemon):
     return num_perfect_ivs(pokemon) >= 5
+
+def is_shiny_6iv(pokemon):
+    return is_shiny(pokemon) and is_perfect(pokemon)
+
+def is_shiny_alpha(pokemon):
+    return is_shiny(pokemon) and is_alpha(pokemon)
+
+def has_no_attack_5iv(pokemon):
+    return no_attack(pokemon) and has_5ivs(pokemon)
+
+def has_6iv_over_30(pokemon):
+    return num_30plus_ivs(pokemon) == 6
