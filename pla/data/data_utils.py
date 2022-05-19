@@ -1,8 +1,15 @@
 import json
-from ..filters import is_shiny
+from ..filters import *
 
 # These are utility functions for understanding PLA data that are not generally used in the app
 map_names = ['AlabasterIcelands', 'CobaltCoastlands', 'CoronetHighlands', 'CrimsonMirelands', 'ObsidianFieldlands']
+
+filter_commands = {
+    "is_shiny": is_shiny,
+    "is_alpha": is_alpha,
+    "is_perfect": is_perfect,
+    "has_5ivs": has_5ivs
+}
 
 def encounter_names(map_name):
     """Get a set of all the pokemon that are encountered on the map"""

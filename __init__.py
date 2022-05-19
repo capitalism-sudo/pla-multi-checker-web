@@ -6,7 +6,7 @@ from .pla import *
 from .pla.core import get_sprite
 from .pla.data import hisuidex
 from .pla.saves import read_research, rolls_from_research
-from .pla.data.data_utils import flatten_map_mmo_results, flatten_multi
+from .pla.data.data_utils import *
 from .pla.filters import *
 
 mimetypes.add_type('application/javascript', '.js')
@@ -101,13 +101,15 @@ def check_multiseed():
     except ValueError:
         return { "error": "You need to input a number for the seed" }
 
+    filter_command = filter_commands.get(request.json['filter'], is_shiny)
+
     results = pla.check_multi_spawner_seed(group_seed,
                                            request.json['research'],
                                            request.json['group_id'],
                                            request.json['maxalive'],
                                            request.json['maxdepth'],
                                            request.json['isnight'])
-    return { "results": flatten_multi(results, config.get('FILTER_ON_SERVER', False),request.json['filter']) }
+    return { "results": flatten_multi(results, config.get('FILTER_ON_SERVER', False), filter_command) }
 
 @app.route('/api/hisuidex')
 def pokemon():
