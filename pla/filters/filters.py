@@ -2,6 +2,9 @@
 def is_shiny(pokemon):
     return pokemon['shiny'] == True
 
+def is_square_shiny(pokemon):
+    return pokemon['square'] == True
+
 def is_alpha(pokemon):
     return pokemon['alpha'] == True
 
