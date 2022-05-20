@@ -624,6 +624,28 @@
                 "alpha":true
             }
 		],
+		"356": [
+            {
+                "slot":100,
+                "species":"Glameow",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Glameow",
+                "alpha":true
+            },
+			{
+                "slot":40,
+                "species":"Purugly",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Purugly",
+                "alpha":true
+            }
+		],
 		"344": [
             {
                 "slot":100,
