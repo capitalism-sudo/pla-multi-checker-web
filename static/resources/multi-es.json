@@ -290,6 +290,50 @@
                 "alpha":true
             }
 		],
+		"234": [
+            {
+                "slot":100,
+                "species":"Beautifly",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Beautifly",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Mothim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Mothim",
+                "alpha":true
+            }
+		],
+		"234n": [
+            {
+                "slot":100,
+                "species":"Dustox",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Dustox",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Mothim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Mothim",
+                "alpha":true
+            }
+		],
 		"246": [
             {
                 "slot":100,
