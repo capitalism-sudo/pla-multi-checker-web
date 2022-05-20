@@ -290,6 +290,94 @@
                 "alpha":true
             }
 		],
+		"246": [
+            {
+                "slot":100,
+                "species":"Starly",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Starly",
+                "alpha":true
+            },
+			{
+                "slot":50,
+                "species":"Staravia",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Staravia",
+                "alpha":true
+            }
+		],
+		"246n": [
+            {
+                "slot":70,
+                "species":"Drifloon",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Drifloon",
+                "alpha":true
+            },
+			{
+                "slot":30,
+                "species":"Drifblim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+		],
+		"247": [
+            {
+                "slot":100,
+                "species":"Aipom",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Aipom",
+                "alpha":true
+            }
+		],
+		"247n": [
+            {
+                "slot":100,
+                "species":"Aipom",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Aipom",
+                "alpha":true
+            },
+			{
+                "slot":50,
+                "species":"Drifloon",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Drifloon",
+                "alpha":true
+            },
+			{
+                "slot":30,
+                "species":"Drifblim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+		],
 		"253": [
             {
                 "slot":100,
@@ -366,6 +454,64 @@
                 "alpha":true
             }
         ],
+		"278": [
+            {
+                "slot":100,
+                "species":"Luxray",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Luxray",
+                "alpha":true
+            }
+		],
+		"278n": [
+            {
+                "slot":100,
+                "species":"Luxray",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Luxray",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Drifblim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+		],
+		"279": [
+            {
+                "slot":100,
+                "species":"Staraptor",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Staraptor",
+                "alpha":true
+            }
+		],
+		"279n": [
+            {
+                "slot":100,
+                "species":"Drifblim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+		],
 		"389": [
             {
                 "slot":100,
