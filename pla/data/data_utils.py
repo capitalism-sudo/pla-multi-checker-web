@@ -12,7 +12,9 @@ filter_commands = {
     "is_square_shiny": is_square_shiny,
     "no_attack": no_attack,
     "has_no_attack_5iv": has_no_attack_5iv,
-    "has_6iv_over_30": has_6iv_over_30
+    "has_6iv_over_30": has_6iv_over_30,
+    "has_5iv_over_30": has_5iv_over_30,
+    "has_no_attack_5iv_over_30": has_no_attack_5iv_over_30
 }
 
 def encounter_names(map_name):

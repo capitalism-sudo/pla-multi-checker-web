@@ -51,3 +51,9 @@ def has_no_attack_5iv(pokemon):
 
 def has_6iv_over_30(pokemon):
     return num_30plus_ivs(pokemon) == 6
+
+def has_5iv_over_30(pokemon):
+    return num_30plus_ivs(pokemon) >= 5
+
+def has_no_attack_5iv_over_30(pokemon):
+    return no_attack(pokemon) and (num_30plus_ivs(pokemon) == 5)
