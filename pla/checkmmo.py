@@ -28,7 +28,7 @@ initchain = ["<span class='pla-results-init'>Initial Spawn 4 </span></span>","<s
               "<span class='pla-results-init'>Initial Spawn 2 </span></span>","<span class='pla-results-init'>Initial Spawn 1 </span></span>"]
 
 def generate_mmo_aggressive_path(group_seed,research,paths,max_spawns,true_spawns,
-                                           encounters,encsum,dupestore,chained,isbonus=False,isnormal,rolls_override=None):
+                                           encounters,encsum,dupestore,chained,isbonus=False,isnormal=False,rolls_override=None):
     """Generate all the pokemon of an outbreak based on a provided aggressive path"""
     # pylint: disable=too-many-locals, too-many-arguments
     # the generation is unique to each path, no use in splitting this function
