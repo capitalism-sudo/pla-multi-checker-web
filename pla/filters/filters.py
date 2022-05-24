@@ -57,3 +57,9 @@ def has_5iv_over_30(pokemon):
 
 def has_no_attack_5iv_over_30(pokemon):
     return no_attack(pokemon) and (num_30plus_ivs(pokemon) == 5)
+
+def has_no_speed_5iv_over_30(pokemon):
+    return no_speed(pokemon) and (num_30plus_ivs(pokemon) == 5)
+
+def has_no_speed_5iv(pokemon):
+    return no_speed(pokemon) and has_5ivs(pokemon)
