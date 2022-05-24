@@ -437,11 +437,11 @@ def get_bonusround(paths,group_id,research,group_seed,map_name,coords,
             
             if epath == []:
                 results = generate_mmo_aggressive_path(seed,research,nbpaths,bonus_spawns,true_spawns,
-                                                                 encounters,encsum,dupestore,chained,True,rolls_override)
+                                                                 encounters,encsum,dupestore,chained,True,False,rolls_override)
             elif epath[0] < spawn_remain:
                 epath_seed = get_extra_path_seed(seed,epath)
                 results = generate_mmo_aggressive_path(epath_seed,research,nbpaths,bonus_spawns,true_spawns,
-                                                                 encounters,encsum,dupestore,chained,True,rolls_override)
+                                                                 encounters,encsum,dupestore,chained,True,False,rolls_override)
             else:
                 continue
             
