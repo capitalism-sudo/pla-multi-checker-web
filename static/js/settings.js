@@ -109,23 +109,6 @@ function initializePage() {
 
   shinyCharmCheckbox.addEventListener("change", saveResearch);
 
-  document
-    .getElementById("pla-research-modal-open")
-    .addEventListener("click", () => {
-      modal.showModal();
-    });
-
-  document
-    .getElementById("pla-research-modal-close")
-    .addEventListener("click", () => {
-      fileUpload.value = null;
-      closeModal();
-    });
-
-  fileUpload.addEventListener("change", (e) => {
-    uploadSave(e.target.files);
-  });
-
   loadResearch();
 }
 
