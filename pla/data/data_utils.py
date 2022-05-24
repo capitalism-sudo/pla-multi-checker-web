@@ -17,7 +17,10 @@ filter_commands = {
     "has_no_attack_5iv_over_30": has_no_attack_5iv_over_30,
     "no_speed": no_speed,
     "has_no_speed_5iv_over_30": has_no_speed_5iv_over_30,
-    "has_no_speed_5iv": has_no_speed_5iv
+    "has_no_speed_5iv": has_no_speed_5iv,
+    "has_no_speed_no_attack_4iv_over_30": has_no_speed_no_attack_4iv_over_30,
+    "has_no_speed_no_attack_4iv": has_no_speed_no_attack_4iv,
+    "has_no_speed_no_attack": has_no_speed_no_attack
 }
 
 def encounter_names(map_name):
