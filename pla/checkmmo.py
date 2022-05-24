@@ -28,7 +28,7 @@ initchain = ["<span class='pla-results-init'>Initial Spawn 4 </span></span>","<s
               "<span class='pla-results-init'>Initial Spawn 2 </span></span>","<span class='pla-results-init'>Initial Spawn 1 </span></span>"]
 
 def generate_mmo_aggressive_path(group_seed,research,paths,max_spawns,true_spawns,
-                                           encounters,encsum,dupestore,chained,isbonus=False,rolls_override=None, isnormal=False):
+                                           encounters,encsum,dupestore,chained,isbonus=False,isnormal,rolls_override=None):
     """Generate all the pokemon of an outbreak based on a provided aggressive path"""
     # pylint: disable=too-many-locals, too-many-arguments
     # the generation is unique to each path, no use in splitting this function
@@ -505,7 +505,7 @@ def get_mmo(reader, map_index, group_id, research, inmap, rolls_override = None,
                          mmoinfo['fr_encounter'], mmoinfo['br_encounter'], has_bonus,
                          mmoinfo['fr_spawns'], mmoinfo['br_spawns'], rolls_override)
                            
-def mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brencounter,has_bonus,max_spawns,br_spawns,rolls_override=None, isnormal=False):
+def mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brencounter,has_bonus,max_spawns,br_spawns,isnormal=False,rolls_override=None):
     chained = {}
 
     encounters,encsum = get_encounter_table(frencounter)
@@ -513,7 +513,7 @@ def mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brenc
     dupestore = {}
     true_spawns = max_spawns + 3
     firstround = generate_mmo_aggressive_path(group_seed,research,paths,max_spawns,true_spawns,
-                                              encounters,encsum,dupestore,chained,False,rolls_override,isnormal)
+                                              encounters,encsum,dupestore,chained,False,isnormal,rolls_override)
     bonusround = None
     
     for result in firstround.values():
@@ -533,7 +533,7 @@ def mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brenc
     print(f"Group {group_id} Complete!")
     return firstround, bonusround
 
-def check_mmo_from_seed(group_seed,research,frencounter,brencounter,has_bonus=False,max_spawns=10,br_spawns=7,rolls_override=None, isnormal=False):
+def check_mmo_from_seed(group_seed,research,frencounter,brencounter,has_bonus=False,max_spawns=10,br_spawns=7, isnormal=False, rolls_override=None):
     #pylint: disable=too-many-branches,too-many-locals,too-many-arguments
     """reads a single map's MMOs"""
     if len(frencounter) == 0:
@@ -546,7 +546,7 @@ def check_mmo_from_seed(group_seed,research,frencounter,brencounter,has_bonus=Fa
     coords = {}
 
     outbreaks = {}
-    firstround, bonusround = mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brencounter,has_bonus,max_spawns,br_spawns,rolls_override, isnormal)
+    firstround, bonusround = mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brencounter,has_bonus,max_spawns,br_spawns,isnormal,rolls_override)
     has_bonus = bonusround is not None
 
     if firstround is not None:
