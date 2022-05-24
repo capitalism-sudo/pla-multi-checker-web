@@ -68,7 +68,8 @@ def get_from_seed():
                                   request.json['brencounter'],
                                   request.json['isbonus'],
                                   request.json['frspawns'],
-                                  request.json['brspawns'])
+                                  request.json['brspawns'],
+                                  request.json['isnormal'])
     print(request.json['research'])
     return { "results": flatten_map_mmo_results(results, config.get('FILTER_ON_SERVER', False), filter_command) }
 

@@ -184,6 +184,7 @@ function uploadSave(files) {
       // this error state is when there is some kind of problem with the
       // request or the configuration of the server
       showModalMessage(MESSAGE_ERROR, error);
+	  console.log(error)
     });
 }
 

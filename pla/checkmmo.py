@@ -28,7 +28,7 @@ initchain = ["<span class='pla-results-init'>Initial Spawn 4 </span></span>","<s
               "<span class='pla-results-init'>Initial Spawn 2 </span></span>","<span class='pla-results-init'>Initial Spawn 1 </span></span>"]
 
 def generate_mmo_aggressive_path(group_seed,research,paths,max_spawns,true_spawns,
-                                           encounters,encsum,dupestore,chained,isbonus=False,rolls_override=None):
+                                           encounters,encsum,dupestore,chained,isbonus=False,rolls_override=None, isnormal=False):
     """Generate all the pokemon of an outbreak based on a provided aggressive path"""
     # pylint: disable=too-many-locals, too-many-arguments
     # the generation is unique to each path, no use in splitting this function
@@ -52,6 +52,8 @@ def generate_mmo_aggressive_path(group_seed,research,paths,max_spawns,true_spawn
             fixed_gender = pokemon.is_fixed_gender()
             guaranteed_ivs = get_guaranteed_ivs(alpha, isbonus)
             rolls = rolls_override if rolls_override is not None else get_rolls(pokemon, research, BASE_ROLLS_MMOS)
+            if isnormal:
+                rolls = rolls + 13
             ec,pid,ivs,ability,gender,nature,shiny,square = \
                 generate_from_seed(fixed_seed, rolls, guaranteed_ivs, fixed_gender)
             gender = pokemon.calculate_gender(gender)
@@ -97,6 +99,8 @@ def generate_mmo_aggressive_path(group_seed,research,paths,max_spawns,true_spawn
                     fixed_gender = pokemon.is_fixed_gender()
                     guaranteed_ivs = get_guaranteed_ivs(alpha, isbonus)
                     rolls = rolls_override if rolls_override is not None else get_rolls(pokemon, research, BASE_ROLLS_MMOS)
+                    if isnormal:
+                        rolls = rolls + 13
                     ec,pid,ivs,ability,gender,nature,shiny,square = \
                         generate_from_seed(fixed_seed, rolls, guaranteed_ivs, fixed_gender)
                     gender = pokemon.calculate_gender(gender)
@@ -501,7 +505,7 @@ def get_mmo(reader, map_index, group_id, research, inmap, rolls_override = None,
                          mmoinfo['fr_encounter'], mmoinfo['br_encounter'], has_bonus,
                          mmoinfo['fr_spawns'], mmoinfo['br_spawns'], rolls_override)
                            
-def mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brencounter,has_bonus,max_spawns,br_spawns,rolls_override=None):
+def mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brencounter,has_bonus,max_spawns,br_spawns,rolls_override=None, isnormal=False):
     chained = {}
 
     encounters,encsum = get_encounter_table(frencounter)
@@ -509,7 +513,7 @@ def mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brenc
     dupestore = {}
     true_spawns = max_spawns + 3
     firstround = generate_mmo_aggressive_path(group_seed,research,paths,max_spawns,true_spawns,
-                                              encounters,encsum,dupestore,chained,False,rolls_override)
+                                              encounters,encsum,dupestore,chained,False,rolls_override,isnormal)
     bonusround = None
     
     for result in firstround.values():
@@ -529,7 +533,7 @@ def mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brenc
     print(f"Group {group_id} Complete!")
     return firstround, bonusround
 
-def check_mmo_from_seed(group_seed,research,frencounter,brencounter,has_bonus=False,max_spawns=10,br_spawns=7,rolls_override=None):
+def check_mmo_from_seed(group_seed,research,frencounter,brencounter,has_bonus=False,max_spawns=10,br_spawns=7,rolls_override=None, isnormal=False):
     #pylint: disable=too-many-branches,too-many-locals,too-many-arguments
     """reads a single map's MMOs"""
     if len(frencounter) == 0:
@@ -542,7 +546,7 @@ def check_mmo_from_seed(group_seed,research,frencounter,brencounter,has_bonus=Fa
     coords = {}
 
     outbreaks = {}
-    firstround, bonusround = mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brencounter,has_bonus,max_spawns,br_spawns,rolls_override)
+    firstround, bonusround = mmo_from_seed(group_id,research,group_seed,map_name,coords,frencounter,brencounter,has_bonus,max_spawns,br_spawns,rolls_override, isnormal)
     has_bonus = bonusround is not None
 
     if firstround is not None:

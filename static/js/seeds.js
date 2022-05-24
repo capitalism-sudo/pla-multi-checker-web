@@ -14,6 +14,7 @@ const resultTemplate = document.querySelector("[data-pla-results-template]");
 const resultsArea = document.querySelector("[data-pla-results]");
 
 // options
+cosnt normalOutbreak = document.getElementById("normalcheckbox");
 const inputSeed = document.getElementById("inputseed");
 const frSpawns = document.getElementById("frspawns");
 const brSpawns = document.getElementById("brspawns");
@@ -160,6 +161,7 @@ function getOptions() {
     frencounter: frEncounter.value,
     brencounter: brEncounter.value,
 	filter: distSelectFilter.value,
+	isnormal: normalOutbreak.checked,
     //	inmap: inmapCheck.checked
   };
 }
