@@ -16,14 +16,10 @@
 	<script>
 	$(document).ready(function(e){
 		function get_json_data(id, parent_id) {
-			console.log(id.substr(0, 1).toUpperCase() + id.substr(1))
 			var html_code = '';
 			$.getJSON('static/resources/seedhashes.json', function(data) {
-				console.log(id)
 				html_code += '<option value="">Select Species</option>';
 				$.each(data, function(key, value) {
-					console.log("Value.parent_id");
-					console.log(value.parent_id);
 					if (value.parent_id == parent_id) {
 						html_code += '<option value="' + value.hash + '">' + value.species + '</option>';
 					}
@@ -32,7 +28,6 @@
 			});
 		}
 		get_json_data('frpokemon',0);
-		console.log("finished frpokemon")
 
 		$(document).on('change', '#frpokemon', function() {
 			var brand_id = $(this).val();
