@@ -107,6 +107,8 @@ def check_multi_spawner(reader, research, group_id, maxspawns, maxdepth, isnight
 def check_multi_spawner_seed(group_seed, research, group_id, maxspawns, maxdepth, isnight, rolls_override = None):
     if maxdepth > 16:
         maxdepth = 5
+    if maxspawns == 3 and maxdepth >9:
+        maxdepth = 9
     if isnight and encounter_table.get(f"{group_id}"+"n") is not None:
         print("Night check is ok")
         group_id = f"{group_id}" + "n"
