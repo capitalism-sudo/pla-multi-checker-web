@@ -8,6 +8,7 @@ from .pla.data import hisuidex
 from .pla.saves import read_research, rolls_from_research
 from .pla.data.data_utils import *
 from .pla.filters import *
+from .swsh import *
 
 mimetypes.add_type('application/javascript', '.js')
 mimetypes.add_type('application/javascript', '.mjs')
@@ -43,6 +44,10 @@ def multiseed():
 @app.route("/settings")
 def settings():
     return render_template('pages/settings.html', title='Settings')
+
+@app.route("/cram")
+def cram():
+    return render_template('pages/cram.html', title='Fun Tools')
 
 
 # API ROUTES
@@ -143,6 +148,52 @@ def read_savefile():
             }
     
     return { 'error': 'There was a problem reading your save' }
+
+@app.route('/api/check-cramomatic', methods=['POST'])
+def check_cram_o_matic():
+
+    results = []
+
+    result = swsh.predict_cram(request.json['s0'],
+                                request.json['s1'],
+                                request.json['npc_count'],
+                                request.json['filter'])
+
+    results.append(result)
+
+    return { "results": results }
+
+@app.route('/api/check-lotto', methods=['POST'])
+def check_lottery():
+
+    results = []
+
+    result = swsh.check_lotto(request.json['s0'],
+                                request.json['s1'],
+                                request.json['npc_count'],
+                                request.json['ids'])
+
+    results.append(result)
+
+    return { "results": results }
+
+@app.route('/api/find-swsh-seed', methods=['POST'])
+def find_swsh_seed():
+
+    results = swsh.find_swsh_seed(request.json['motions'])
+
+    return { "results": results }
+
+@app.route('/api/update-swsh-seed', methods=['POST'])
+def update_swsh_seed():
+
+    results = swsh.update_swsh_seed(request.json['s0'],
+                                        request.json['s1'],
+                                        request.json['motions'],
+                                        request.json['min'],
+                                        request.json['max'])
+
+    return { "results": results }
 
 """
 # Legacy routes used by bots
