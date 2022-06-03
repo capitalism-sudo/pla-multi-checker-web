@@ -105,7 +105,7 @@ def check_multi_spawner(reader, research, group_id, maxspawns, maxdepth, isnight
     return check_multi_spawner_seed(group_seed, research, group_id, maxspawns, maxdepth, isnight, rolls_override)
 
 def check_multi_spawner_seed(group_seed, research, group_id, maxspawns, maxdepth, isnight, rolls_override = None):
-    if maxdepth > 16:
+    if maxdepth > 20:
         maxdepth = 5
     if maxspawns == 3 and maxdepth >9:
         maxdepth = 9
