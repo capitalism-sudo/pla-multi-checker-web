@@ -80,6 +80,26 @@
 		"parent_id": 0
 	},
 	{
+		"id": "91",
+		"name": "Crimson Mirelands Croagunk",
+		"parent_id": 0
+	},
+	{
+		"id": "117",
+		"name": "Crimson Mirelands Hippopotas/Hippowdon",
+		"parent_id": 0
+	},
+	{
+		"id": "182",
+		"name": "Crimson Mirelands Paras/Parasect",
+		"parent_id": 0
+	},
+	{
+		"id": "382",
+		"name": "Crimson Mirelands Kricketune",
+		"parent_id": 0
+	},
+	{
 		"id": "390",
 		"name": "Crimson Mirelands Combee",
 		"parent_id": 0
@@ -90,6 +110,16 @@
 		"parent_id": 0
 	},
 	{
+		"id": "161",
+		"name": "Cobalt Coastlands Murkrow (Night Only)",
+		"parent_id": 0
+	},
+	{
+		"id": "267",
+		"name": "Cobalt Coastlands Tentacool/Tentacruel",
+		"parent_id": 0
+	},
+	{
 		"id": "344",
 		"name": "Cobalt Coastlands Basculin",
 		"parent_id": 0
@@ -97,6 +127,11 @@
 	{
 		"id": "356",
 		"name": "Cobalt Coastlands Glameow/Purugly",
+		"parent_id": 0
+	},
+	{
+		"id": "362",
+		"name": "Cobalt Coastlands Qwilfish",
 		"parent_id": 0
 	},
 	{
