@@ -290,6 +290,114 @@
                 "alpha":true
             }
 		],
+		"91": [
+            {
+                "slot":100,
+                "species":"Croagunk",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Croagunk",
+                "alpha":true
+            }
+		],
+		"91n": [
+            {
+                "slot":100,
+                "species":"Croagunk",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Croagunk",
+                "alpha":true
+            },
+			{
+                "slot":50,
+                "species":"Gastly",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Gastly",
+                "alpha":true
+            },
+			{
+                "slot":30,
+                "species":"Haunter",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Haunter",
+                "alpha":true
+            }
+		],
+		"117": [
+            {
+                "slot":100,
+                "species":"Hippopotas",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Hippopotas",
+                "alpha":true
+            },
+			{
+                "slot":30,
+                "species":"Hippowdon",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Hippowdon",
+                "alpha":true
+            }
+		],
+		"117n": [
+            {
+                "slot":100,
+                "species":"Hippopotas",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Hippopotas",
+                "alpha":true
+            },
+			{
+                "slot":30,
+                "species":"Hippowdon",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Hippowdon",
+                "alpha":true
+            },
+			{
+                "slot":80,
+                "species":"Gastly",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Gastly",
+                "alpha":true
+            },
+			{
+                "slot":20,
+                "species":"Haunter",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Haunter",
+                "alpha":true
+            }
+		],
 		"129": [
             {
                 "slot":20,
@@ -319,6 +427,18 @@
             {
                 "slot":2,
                 "species":"Kricketot",
+                "alpha":true
+            }
+		],
+		"161n": [
+            {
+                "slot":100,
+                "species":"Murkrow",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Murkrow",
                 "alpha":true
             }
 		],
@@ -356,6 +476,160 @@
                 "alpha":true
             }
 		],
+		"182": [
+            {
+                "slot":100,
+                "species":"Paras",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Paras",
+                "alpha":true
+            },
+			{
+                "slot":50,
+                "species":"Parasect",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Parasect",
+                "alpha":true
+            }
+		],
+		"234": [
+            {
+                "slot":100,
+                "species":"Beautifly",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Beautifly",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Mothim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Mothim",
+                "alpha":true
+            }
+		],
+		"234n": [
+            {
+                "slot":100,
+                "species":"Dustox",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Dustox",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Mothim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Mothim",
+                "alpha":true
+            }
+		],
+		"246": [
+            {
+                "slot":100,
+                "species":"Starly",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Starly",
+                "alpha":true
+            },
+			{
+                "slot":50,
+                "species":"Staravia",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Staravia",
+                "alpha":true
+            }
+		],
+		"246n": [
+            {
+                "slot":70,
+                "species":"Drifloon",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Drifloon",
+                "alpha":true
+            },
+			{
+                "slot":30,
+                "species":"Drifblim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+		],
+		"247": [
+            {
+                "slot":100,
+                "species":"Aipom",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Aipom",
+                "alpha":true
+            }
+		],
+		"247n": [
+            {
+                "slot":100,
+                "species":"Aipom",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Aipom",
+                "alpha":true
+            },
+			{
+                "slot":50,
+                "species":"Drifloon",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Drifloon",
+                "alpha":true
+            },
+			{
+                "slot":30,
+                "species":"Drifblim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+		],
 		"253": [
             {
                 "slot":100,
@@ -375,6 +649,28 @@
             {
                 "slot":1,
                 "species":"Gastrodon",
+                "alpha":true
+            }
+        ],
+		"267": [
+            {
+                "slot":100,
+                "species":"Tentacool",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Tentacool",
+                "alpha":true
+            },
+            {
+                "slot":60,
+                "species":"Tentacruel",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Tentacruel",
                 "alpha":true
             }
         ],
@@ -470,6 +766,26 @@
                 "species":"Unown-4",
                 "alpha":false
             },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+		],
+		"382": [
+            {
+                "slot":100,
+                "species":"Kricketune",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Kricketune",
+                "alpha":true
+            }
+		],
+		"389": [
+            {
 			{
                 "slot":100,
                 "species":"Unown-5",
@@ -1073,6 +1389,18 @@
             {
                 "slot":1,
                 "species":"Basculin-2",
+                "alpha":true
+            }
+		],
+		"362": [
+            {
+                "slot":100,
+                "species":"Qwilfish-1",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Qwilfish-1",
                 "alpha":true
             }
 		],
