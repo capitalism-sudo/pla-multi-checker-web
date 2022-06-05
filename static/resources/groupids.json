@@ -35,6 +35,21 @@
 		"parent_id": 0
 	},
 	{
+		"id": "234",
+		"name": "Obsidian Fieldlands Beautifly/Mothim (Dustox/Mothim @ Night)",
+		"parent_id": 0
+	},
+	{
+		"id": "246",
+		"name": "Obsidian Fieldlands Starly/Staravia",
+		"parent_id": 0
+	},
+	{
+		"id": "247",
+		"name": "Obsidian Fieldlands Aipom",
+		"parent_id": 0
+	},
+	{
 		"id": "253",
 		"name": "Obsidian Fieldlands Shellos/Gastrodon (West Sea)",
 		"parent_id": 0
@@ -42,6 +57,16 @@
 	{
 		"id": "273",
 		"name": "Obsidian Fieldlands Abra/Kadabra",
+		"parent_id": 0
+	},
+	{
+		"id": "278",
+		"name": "Obsidian Fieldlands Luxray",
+		"parent_id": 0
+	},
+	{
+		"id": "279",
+		"name": "Obsidian Fieldlands Staraptor",
 		"parent_id": 0
 	},
 	{
@@ -107,6 +132,11 @@
 	{
 		"id": "362",
 		"name": "Cobalt Coastlands Qwilfish",
+		"parent_id": 0
+	},
+	{
+		"id": "56",
+		"name": "Coronet Highlands Teddiursa/Ursaring",
 		"parent_id": 0
 	},
 	{

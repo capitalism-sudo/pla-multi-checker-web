@@ -222,6 +222,28 @@
                 "alpha":true
             }
 		],
+		"56": [
+            {
+                "slot":30,
+                "species":"Teddiursa",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Teddiursa",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Ursaring",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Ursaring",
+                "alpha":true
+            }
+		],
 		"85": [
             {
                 "slot":100,
@@ -728,6 +750,86 @@
                 "alpha":true
             }
         ],
+		"278": [
+            {
+                "slot":100,
+                "species":"Luxray",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Luxray",
+                "alpha":true
+            }
+		],
+		"278n": [
+            {
+                "slot":100,
+                "species":"Luxray",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Luxray",
+                "alpha":true
+            },
+			{
+                "slot":100,
+                "species":"Drifblim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+		],
+		"279": [
+            {
+                "slot":100,
+                "species":"Staraptor",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Staraptor",
+                "alpha":true
+            }
+		],
+		"279n": [
+            {
+                "slot":100,
+                "species":"Drifblim",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Drifblim",
+                "alpha":true
+            }
+		],
+		"356": [
+            {
+                "slot":100,
+                "species":"Glameow",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Glameow",
+                "alpha":true
+            },
+			{
+                "slot":40,
+                "species":"Purugly",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Purugly",
+                "alpha":true
+            }
+		],
 		"389": [
             {
                 "slot":100,
