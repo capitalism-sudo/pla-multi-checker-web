@@ -296,7 +296,7 @@ function showResult(result) {
   }
   
   let resultAlpha = resultContainer.querySelector("[data-swsh-results-isbonuscount]");
-  resultAlpha.textContent = result.alpha ? "Bonus!" : "No Bonus";
+  resultAlpha.textContent = result.bonus ? "Bonus!" : "No Bonus";
   resultAlpha.classList.toggle("swsh-result-true", result.bonus);
   resultAlpha.classList.toggle("swsh-result-false", !result.bonus);
   
