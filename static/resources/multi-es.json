@@ -1358,6 +1358,48 @@
                 "alpha":true
             }
         ],
+		"245n": [
+            {
+                "slot":100,
+                "species":"Swinub",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Swinub",
+                "alpha":true
+            },
+            {
+                "slot":50,
+                "species":"Piloswine",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Piloswine",
+                "alpha":true
+            },
+			{
+                "slot":20,
+                "species":"Duskull",
+                "alpha":false
+            },
+            {
+                "slot":2,
+                "species":"Duskull",
+                "alpha":true
+            },
+            {
+                "slot":100,
+                "species":"Dusclops",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Dusclops",
+                "alpha":true
+            }
+        ],
 		"183": [
             {
                 "slot":100,
