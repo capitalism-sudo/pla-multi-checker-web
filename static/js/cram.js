@@ -22,6 +22,7 @@ const seed1 = document.getElementById("inputseed1");
 const npcCount = document.getElementById("npccount");
 const distSportorSafari = document.getElementById("sportorsafari");
 const distBonusCount = document.getElementById("bonuscount");
+const distApricorn = document.getElementById("apricorn");
 const trainerID = document.getElementById("tid");
 const motionsUpdate = document.getElementById("seedupdate");
 const startingAdvance = document.getElementById("startingadvance");
@@ -176,6 +177,7 @@ function getOptions() {
     filter: {
 		isSafariSport: distSportorSafari.checked,
 		isBonusCount: distBonusCount.checked,
+		isApricorn: distApricorn.checked,
     },
   };
 }
@@ -283,11 +285,20 @@ function showSeedUpdateInfo(result) {
 	
 function showResult(result) {
   const resultContainer = resultTemplate.content.cloneNode(true);
+  
+  let balltype = '';
 
+  if (result.sportsafari) {
+	  balltype = "Sport or Safari";
+  }
+  else if (result.ballroll == 99) {
+	  balltype = "Apricorn";
+  }
+  
   resultContainer.querySelector("[data-swsh-results-adv]").innerText =
     result.adv;
-  resultContainer.querySelector("[data-swsh-results-issportsafari]").innerText =
-    result.sportsafari;
+  resultContainer.querySelector("[data-swsh-results-balltype]").innerText =
+    balltype;
   resultContainer.querySelector("[data-swsh-results-isbonuscount]").innerText =
     result.bonus;
   resultContainer.querySelector("[data-swsh-results-menuadv]").innerText =

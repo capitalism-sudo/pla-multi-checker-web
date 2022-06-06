@@ -5,6 +5,8 @@ def filt(result, filter):
         return False
     elif filter['isBonusCount'] and not result['isBonusCount']:
         return False
+    elif filter['isApricorn'] and not result['ballRoll'] == 99:
+        return False
     else:
         return True
 
@@ -42,7 +44,7 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
     predict_advances = 0
 
     print(f"State {rng.state:016x}")
-    print(f"isSafariSport Filter: {filter['isSafariSport']}, isBonusCount Filter: {filter['isBonusCount']}")
+    print(f"isSafariSport Filter: {filter['isSafariSport']}, isBonusCount Filter: {filter['isBonusCount']}, Apricorn Filter: {filter['isApricorn']}")
     print("Finding Target...")
 
     result = generate(predict, npc_count)
@@ -65,4 +67,4 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
     print(predict_advances, result)
     print()
 
-    return { "adv": predict_advances, "sportsafari": result['isSafariSport'], "bonus": result['isBonusCount'], "menu_adv": result['menuAdvances'] }
+    return { "adv": predict_advances, "sportsafari": result['isSafariSport'], "bonus": result['isBonusCount'], "menu_adv": result['menuAdvances'], "ballroll": result['ballRoll'] }
