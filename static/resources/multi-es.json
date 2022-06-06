@@ -520,6 +520,18 @@
                 "alpha":true
             }
 		],
+		"203": [
+            {
+                "slot":100,
+                "species":"Rufflet",
+                "alpha":false
+            },
+            {
+                "slot":1,
+                "species":"Rufflet",
+                "alpha":true
+            }
+		],
 		"234": [
             {
                 "slot":100,

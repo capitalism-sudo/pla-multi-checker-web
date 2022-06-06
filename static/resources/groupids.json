@@ -143,5 +143,10 @@
 		"id": "245",
 		"name": "Alabaster Icelands Swinub/Piloswine",
 		"parent_id": 0
+	},
+	{
+		"id": "203",
+		"name": "Alabaster Icelands Rufflet",
+		"parent_id": 0
 	}
 ]
