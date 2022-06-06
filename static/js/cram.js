@@ -295,12 +295,16 @@ function showResult(result) {
 	  balltype = "Apricorn";
   }
   
+  let resultAlpha = resultContainer.querySelector("[data-swsh-results-isbonuscount]");
+  resultAlpha.textContent = result.alpha ? "Bonus!" : "No Bonus";
+  resultAlpha.classList.toggle("swsh-result-true", result.bonus);
+  resultAlpha.classList.toggle("swsh-result-false", !result.bonus);
+  
   resultContainer.querySelector("[data-swsh-results-adv]").innerText =
     result.adv;
+  resultContainer.querySelector("[data-swsh-results-balltype]").classList.toggle("swsh-result-true");
   resultContainer.querySelector("[data-swsh-results-balltype]").innerText =
     balltype;
-  resultContainer.querySelector("[data-swsh-results-isbonuscount]").innerText =
-    result.bonus;
   resultContainer.querySelector("[data-swsh-results-menuadv]").innerText =
     result.menu_adv;
 
