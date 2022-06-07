@@ -52,4 +52,8 @@ def check_lotto(s0, s1, npc_count, ids):
     print(predict_advances, result)
     print()
 
-    return { "adv": predict_advances, "lotto": result['lotto'], "menu_adv": result['menu_advances'], "total": predict_advances + result['menu_advances'] }
+    return { "adv": predict_advances, "lotto": result['lotto'],
+            "menu_adv": result['menu_advances'],
+            "total": predict_advances + result['menu_advances'],
+            "prev": prev,
+            "next": next }
