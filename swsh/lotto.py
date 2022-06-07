@@ -35,15 +35,21 @@ def check_lotto(s0, s1, npc_count, ids):
     #print()
 
     while str(result['lotto']) not in filter:
+        prev_old = predict_advances
+        prev = result
         predict_advances += 1
         predict.next()
         result = generate(predict, npc_count)
-        #print(f"predict advance: {predict_advances}")
-        #print(result)
-        #print()
+        
+        #previous lotto results and next lotto results
+        prev['total'] = prev_old + prev['menu_advances']
+        _predict = XOROSHIRO(*predict.seed.copy())
+        _predict.next()
+        next = generate(_predict, npc_count)
+        next['total'] = predict_advances + next['menu_advances'] + 1
 
     print(f"RNG State: S0: {predict.seed[0]:X}, S1: {predict.seed[1]:X}")
     print(predict_advances, result)
     print()
 
-    return { "adv": predict_advances, "lotto": result['lotto'], "menu_adv": result['menu_advances'] }
+    return { "adv": predict_advances, "lotto": result['lotto'], "menu_adv": result['menu_advances'], "total": predict_advances + result['menu_advances'] }

@@ -350,6 +350,28 @@ function showResultLotto(result) {
     result.menu_adv;
   resultContainer.querySelector("[data-swsh-results-lotto]").innerText =
     result.lotto;
+  resultContainer.querySelector("[data-swsh-results-total]").innerText =
+    result.total;
+	
+//prev results
+  resultContainer.querySelector("[data-swsh-results-prev-adv]").innerText =
+    result.prev.adv;
+  resultContainer.querySelector("[data-swsh-results-prev-menuadv]").innerText =
+    result.prev.menu_adv;
+  resultContainer.querySelector("[data-swsh-results-prev-lotto]").innerText =
+    result.prev.lotto;
+  resultContainer.querySelector("[data-swsh-results-prev-total]").innerText =
+    result.prev.total;
+	
+//next results
+  resultContainer.querySelector("[data-swsh-results-next-adv]").innerText =
+    result.next.adv;
+  resultContainer.querySelector("[data-swsh-results-next-menuadv]").innerText =
+    result.next.menu_adv;
+  resultContainer.querySelector("[data-swsh-results-next-lotto]").innerText =
+    result.next.lotto;
+  resultContainer.querySelector("[data-swsh-results-next-total]").innerText =
+    result.next.total;
 
   resultsArea.appendChild(resultContainer);
 }
