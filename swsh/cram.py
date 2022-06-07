@@ -76,12 +76,14 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
         predict.next()
         prev = result
         prev["adv"] = predict_old
+        prev["total"] = predict_old + prev['menuAdvances']
         result = generate(predict, npc_count)
         _predict = XOROSHIRO(*predict.seed.copy())
         _predict.next()
         predict_new = predict_advances +1
         next = generate(_predict, npc_count)
         next["adv"] = predict_new
+        next["total"] = predict_new + next['menuAdvances']
         #print(f"Predict State: {predict.seed[0]:X}, {predict.seed[1]:X}")
         #print(predict_advances, result)
         #print()
