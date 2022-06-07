@@ -72,6 +72,7 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
         prev = result
         result = generate(predict, npc_count)
         _predict = predict
+        _predict.next()
         next = generate(_predict, npc_count)
         #print(f"Predict State: {predict.seed[0]:X}, {predict.seed[1]:X}")
         #print(predict_advances, result)
@@ -89,5 +90,6 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
             "menu_adv": result['menuAdvances'],
             "ballroll": result['ballRoll'],
             "total": predict_advances+result['menuAdvances'],
+            "balltype": result['balltype'],
             "prev": prev,
             "next": next }
