@@ -50,8 +50,8 @@ def generate(_rng: XOROSHIRO, npc_count = 21):
         is_bonus_count = __rng.rand(100) == 0
 
     return {"menuAdvances": menu_advances, "itemRoll": item_roll, "ballRoll": ball_roll, "isSafariSport": is_safari_sport, "isBonusCount": is_bonus_count, "balltype": ball_type(ball_roll),
-            "s0": s0,
-            "s1": s1}
+            "s0": f"{s0:X}",
+            "s1": f"{s1:X}"}
 
 def predict_cram(seed_s0, seed_s1, npc_count, filter):
     rng = XOROSHIRO(int(seed_s0, 16), int(seed_s1, 16))
