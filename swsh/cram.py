@@ -71,7 +71,7 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
         predict.next()
         prev = result
         result = generate(predict, npc_count)
-        _predict = predict.seed.copy()
+        _predict = predict.copy()
         next = generate(_predict, npc_count)
         #print(f"Predict State: {predict.seed[0]:X}, {predict.seed[1]:X}")
         #print(predict_advances, result)
