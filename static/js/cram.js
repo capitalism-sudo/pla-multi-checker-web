@@ -320,7 +320,7 @@ function showResult(result) {
   prevresultBall.classList.toggle("swsh-result-false", !goodball);
   
   let prevresultAlpha = resultContainer.querySelector("[data-swsh-results-prev-isbonuscount]");
-  prevresultAlpha.textContent = result.prev.bonus ? "Bonus!" : "No Bonus";
+  prevresultAlpha.textContent = result.prev.isBonusCount ? "Bonus!" : "No Bonus";
   prevresultAlpha.classList.toggle("swsh-result-true", result.prev.bonus);
   prevresultAlpha.classList.toggle("swsh-result-false", !result.prev.bonus);
   
@@ -334,7 +334,7 @@ function showResult(result) {
   nextresultBall.classList.toggle("swsh-result-false", !goodball);
   
   let nextresultAlpha = resultContainer.querySelector("[data-swsh-results-next-isbonuscount]");
-  nextresultAlpha.textContent = result.next.bonus ? "Bonus!" : "No Bonus";
+  nextresultAlpha.textContent = result.next.isBonusCount ? "Bonus!" : "No Bonus";
   nextresultAlpha.classList.toggle("swsh-result-true", result.next.bonus);
   nextresultAlpha.classList.toggle("swsh-result-false", !result.next.bonus);
 

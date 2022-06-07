@@ -84,7 +84,8 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
     print(predict_advances, result)
     print()
 
-    return { "adv": predict_advances, "sportsafari": result['isSafariSport'],
+    return { "adv": predict_advances,
+            "isSafariSport": result['isSafariSport'],
             "bonus": result['isBonusCount'],
             "menu_adv": result['menuAdvances'],
             "ballroll": result['ballRoll'],
