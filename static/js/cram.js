@@ -357,7 +357,7 @@ function showResultLotto(result) {
   resultContainer.querySelector("[data-swsh-results-prev-adv]").innerText =
     result.prev.adv;
   resultContainer.querySelector("[data-swsh-results-prev-menuadv]").innerText =
-    result.prev.menu_adv;
+    result.prev.menu_advances;
   resultContainer.querySelector("[data-swsh-results-prev-lotto]").innerText =
     result.prev.lotto;
   resultContainer.querySelector("[data-swsh-results-prev-total]").innerText =
@@ -367,7 +367,7 @@ function showResultLotto(result) {
   resultContainer.querySelector("[data-swsh-results-next-adv]").innerText =
     result.next.adv;
   resultContainer.querySelector("[data-swsh-results-next-menuadv]").innerText =
-    result.next.menu_adv;
+    result.next.menu_advances;
   resultContainer.querySelector("[data-swsh-results-next-lotto]").innerText =
     result.next.lotto;
   resultContainer.querySelector("[data-swsh-results-next-total]").innerText =

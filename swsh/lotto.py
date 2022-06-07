@@ -43,10 +43,12 @@ def check_lotto(s0, s1, npc_count, ids):
         
         #previous lotto results and next lotto results
         prev['total'] = prev_old + prev['menu_advances']
+        prev['adv'] = prev_old
         _predict = XOROSHIRO(*predict.seed.copy())
         _predict.next()
         next = generate(_predict, npc_count)
         next['total'] = predict_advances + next['menu_advances'] + 1
+        next['adv'] = predict_advances + 1
 
     print(f"RNG State: S0: {predict.seed[0]:X}, S1: {predict.seed[1]:X}")
     print(predict_advances, result)
