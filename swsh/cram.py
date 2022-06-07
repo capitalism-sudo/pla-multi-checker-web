@@ -36,6 +36,8 @@ def generate(_rng: XOROSHIRO, npc_count = 21):
     menu_advances += 1
     menu_advances += __rng.rand_count(91)[1]
 
+    s0, s1 = __rng.seed
+
 
     #Jam the Cram
 
@@ -47,7 +49,9 @@ def generate(_rng: XOROSHIRO, npc_count = 21):
     else:
         is_bonus_count = __rng.rand(100) == 0
 
-    return {"menuAdvances": menu_advances, "itemRoll": item_roll, "ballRoll": ball_roll, "isSafariSport": is_safari_sport, "isBonusCount": is_bonus_count, "balltype": ball_type(ball_roll)}
+    return {"menuAdvances": menu_advances, "itemRoll": item_roll, "ballRoll": ball_roll, "isSafariSport": is_safari_sport, "isBonusCount": is_bonus_count, "balltype": ball_type(ball_roll),
+            "s0": s0,
+            "s1": s1}
 
 def predict_cram(seed_s0, seed_s1, npc_count, filter):
     rng = XOROSHIRO(int(seed_s0, 16), int(seed_s1, 16))
@@ -67,12 +71,16 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
     #print("Finding Target...")
 
     while not filt(result, filter):
+        predict_old = predict_advances
         predict_advances += 1
         predict.next()
         prev = result
+        prev["adv"] = predict_old
         result = generate(predict, npc_count)
         _predict = XOROSHIRO(*predict.seed.copy())
+        predict_new = predict_advances +1
         next = generate(_predict, npc_count)
+        next["adv"] = predict_new
         #print(f"Predict State: {predict.seed[0]:X}, {predict.seed[1]:X}")
         #print(predict_advances, result)
         #print()
@@ -91,5 +99,7 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
             "ballroll": result['ballRoll'],
             "total": predict_advances+result['menuAdvances'],
             "balltype": result['balltype'],
+            "s0": result['s0'],
+            "s1": result['s1'],
             "prev": prev,
             "next": next }
