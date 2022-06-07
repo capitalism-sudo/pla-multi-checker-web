@@ -288,7 +288,7 @@ function showResult(result) {
   
 
   let resultBall = resultContainer.querySelector("[data-swsh-results-balltype]");
-  resultBall.textContent = result.isSafariSport ? "Safari or Sport Ball" : result.balltype;
+  resultBall.innerText = result.isSafariSport ? "Safari or Sport Ball" : result.balltype;
   let goodball = false;
   if (result.isSafariSport || result.balltype == "Apricorn Ball") {
 	  goodball = true;
@@ -311,7 +311,7 @@ function showResult(result) {
 
 	//results area for next and prev advances
   let prevresultBall = resultContainer.querySelector("[data-swsh-results-prev-balltype]");
-  prevresultBall.textContent = result.prev.isSafariSport ? "Safari or Sport Ball" : result.prev.balltype;
+  prevresultBall.innerText = result.prev.isSafariSport ? "Safari or Sport Ball" : result.prev.balltype;
   let prevgoodball = false;
   if (result.prev.isSafariSport || result.prev.balltype == "Apricorn Ball") {
 	  goodball = true;
