@@ -89,5 +89,5 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
             "menu_adv": result['menuAdvances'],
             "ballroll": result['ballRoll'],
             "total": predict_advances+result['menuAdvances'],
-            "previous": prev,
+            "prev": prev,
             "next": next }
