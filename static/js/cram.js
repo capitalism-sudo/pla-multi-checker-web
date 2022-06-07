@@ -286,14 +286,15 @@ function showSeedUpdateInfo(result) {
 function showResult(result) {
   const resultContainer = resultTemplate.content.cloneNode(true);
   
-  let balltype = '';
 
-  if (result.sportsafari) {
-	  balltype = "Sport or Safari";
+  let resultBall = resultContainer.querySelector("[data-swsh-results-balltype]");
+  resultBall.textContent = result.isSafariSport ? "Safari or Sport Ball" : result.balltype;
+  let goodball = false;
+  if (result.isSafariSport) || (result.balltype == "Apricorn Ball") {
+	  goodball = true;
   }
-  else if (result.ballroll == 99) {
-	  balltype = "Apricorn";
-  }
+  resultBall.classList.toggle("swsh-result-true", goodball);
+  resultBall.classList.toggle("swsh-result-false", !goodball);
   
   let resultAlpha = resultContainer.querySelector("[data-swsh-results-isbonuscount]");
   resultAlpha.textContent = result.bonus ? "Bonus!" : "No Bonus";
@@ -302,11 +303,40 @@ function showResult(result) {
   
   resultContainer.querySelector("[data-swsh-results-adv]").innerText =
     result.adv;
-  resultContainer.querySelector("[data-swsh-results-balltype]").classList.toggle("swsh-result-true");
-  resultContainer.querySelector("[data-swsh-results-balltype]").innerText =
-    balltype;
   resultContainer.querySelector("[data-swsh-results-menuadv]").innerText =
     result.menu_adv;
+  resultContainer.querySelector("[data-swsh-results-total]").innerText =
+    result.total;
+	
+
+	//results area for next and prev advances
+  let prevresultBall = resultContainer.querySelector("[data-swsh-results-prev-balltype]");
+  prevresultBall.textContent = result.prev.isSafariSport ? "Safari or Sport Ball" : result.prev.balltype;
+  let prevgoodball = false;
+  if (result.prev.isSafariSport) || (result.prev.balltype == "Apricorn Ball") {
+	  goodball = true;
+  }
+  prevresultBall.classList.toggle("swsh-result-true", goodball);
+  prevresultBall.classList.toggle("swsh-result-false", !goodball);
+  
+  let prevresultAlpha = resultContainer.querySelector("[data-swsh-results-prev-isbonuscount]");
+  prevresultAlpha.textContent = result.prev.bonus ? "Bonus!" : "No Bonus";
+  prevresultAlpha.classList.toggle("swsh-result-true", result.prev.bonus);
+  prevresultAlpha.classList.toggle("swsh-result-false", !result.prev.bonus);
+  
+  let nextresultBall = resultContainer.querySelector("[data-swsh-results-next-balltype]");
+  nextresultBall.textContent = result.next.isSafariSport ? "Safari or Sport Ball" : result.next.balltype;
+  let nextgoodball = false;
+  if (result.next.isSafariSport) || (result.next.balltype == "Apricorn Ball") {
+	  goodball = true;
+  }
+  nextresultBall.classList.toggle("swsh-result-true", goodball);
+  nextresultBall.classList.toggle("swsh-result-false", !goodball);
+  
+  let nextresultAlpha = resultContainer.querySelector("[data-swsh-results-next-isbonuscount]");
+  nextresultAlpha.textContent = result.next.bonus ? "Bonus!" : "No Bonus";
+  nextresultAlpha.classList.toggle("swsh-result-true", result.next.bonus);
+  nextresultAlpha.classList.toggle("swsh-result-false", !result.next.bonus);
 
   resultsArea.appendChild(resultContainer);
 }

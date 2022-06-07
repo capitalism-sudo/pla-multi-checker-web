@@ -5,10 +5,24 @@ def filt(result, filter):
         return False
     elif filter['isBonusCount'] and not result['isBonusCount']:
         return False
-    elif filter['isApricorn'] and not result['ballRoll'] == 99:
+    elif filter['isApricorn'] and not result['ballRoll'] == 99 and not result['isSafariSport']:
         return False
     else:
         return True
+
+def ball_type(ball_roll):
+    if ball_roll == 99:
+        ball_type = "Apricorn Ball"
+    elif ball_roll < 99 and ball_roll >= 75:
+        ball_type = "Shop Ball 2"
+    elif ball_roll < 75 and ball_roll >= 50:
+        ball_type = "Shop Ball 1"
+    elif ball_roll < 50 and ball_roll >= 25:
+        ball_type = "Great Ball"
+    else:
+        ball_type = "Pokeball"
+
+    return ball_type
 
 def generate(_rng: XOROSHIRO, npc_count = 21):
     __rng = XOROSHIRO(*_rng.seed.copy())
@@ -33,7 +47,7 @@ def generate(_rng: XOROSHIRO, npc_count = 21):
     else:
         is_bonus_count = __rng.rand(100) == 0
 
-    return {"menuAdvances": menu_advances, "itemRoll": item_roll, "ballRoll": ball_roll, "isSafariSport": is_safari_sport, "isBonusCount": is_bonus_count}
+    return {"menuAdvances": menu_advances, "itemRoll": item_roll, "ballRoll": ball_roll, "isSafariSport": is_safari_sport, "isBonusCount": is_bonus_count, "balltype": ball_type(ball_roll)}
 
 def predict_cram(seed_s0, seed_s1, npc_count, filter):
     rng = XOROSHIRO(int(seed_s0, 16), int(seed_s1, 16))
@@ -55,7 +69,10 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
     while not filt(result, filter):
         predict_advances += 1
         predict.next()
+        prev = result
         result = generate(predict, npc_count)
+        _predict = predict.seed.copy()
+        next = generate(_predict, npc_count)
         #print(f"Predict State: {predict.seed[0]:X}, {predict.seed[1]:X}")
         #print(predict_advances, result)
         #print()
@@ -67,4 +84,10 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
     print(predict_advances, result)
     print()
 
-    return { "adv": predict_advances, "sportsafari": result['isSafariSport'], "bonus": result['isBonusCount'], "menu_adv": result['menuAdvances'], "ballroll": result['ballRoll'] }
+    return { "adv": predict_advances, "sportsafari": result['isSafariSport'],
+            "bonus": result['isBonusCount'],
+            "menu_adv": result['menuAdvances'],
+            "ballroll": result['ballRoll'],
+            "total": predict_advances+result['menuAdvances'],
+            "previous": prev,
+            "next": next }
