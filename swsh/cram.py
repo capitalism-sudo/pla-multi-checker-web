@@ -78,6 +78,7 @@ def predict_cram(seed_s0, seed_s1, npc_count, filter):
         prev["adv"] = predict_old
         result = generate(predict, npc_count)
         _predict = XOROSHIRO(*predict.seed.copy())
+        _predict.next()
         predict_new = predict_advances +1
         next = generate(_predict, npc_count)
         next["adv"] = predict_new

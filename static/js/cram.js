@@ -314,29 +314,29 @@ function showResult(result) {
   prevresultBall.innerText = result.prev.isSafariSport ? "Safari or Sport Ball" : result.prev.balltype;
   let prevgoodball = false;
   if (result.prev.isSafariSport || result.prev.balltype == "Apricorn Ball") {
-	  goodball = true;
+	  prevgoodball = true;
   }
-  prevresultBall.classList.toggle("swsh-result-true", goodball);
-  prevresultBall.classList.toggle("swsh-result-false", !goodball);
+  prevresultBall.classList.toggle("swsh-result-true", prevgoodball);
+  prevresultBall.classList.toggle("swsh-result-false", !prevgoodball);
   
   let prevresultAlpha = resultContainer.querySelector("[data-swsh-results-prev-isbonuscount]");
   prevresultAlpha.textContent = result.prev.isBonusCount ? "Bonus!" : "No Bonus";
-  prevresultAlpha.classList.toggle("swsh-result-true", result.prev.bonus);
-  prevresultAlpha.classList.toggle("swsh-result-false", !result.prev.bonus);
+  prevresultAlpha.classList.toggle("swsh-result-true", result.prev.isBonusCount);
+  prevresultAlpha.classList.toggle("swsh-result-false", !result.prev.isBonusCount);
   
   let nextresultBall = resultContainer.querySelector("[data-swsh-results-next-balltype]");
   nextresultBall.textContent = result.next.isSafariSport ? "Safari or Sport Ball" : result.next.balltype;
   let nextgoodball = false;
   if (result.next.isSafariSport || result.next.balltype == "Apricorn Ball") {
-	  goodball = true;
+	  nextgoodball = true;
   }
-  nextresultBall.classList.toggle("swsh-result-true", goodball);
-  nextresultBall.classList.toggle("swsh-result-false", !goodball);
+  nextresultBall.classList.toggle("swsh-result-true", nextgoodball);
+  nextresultBall.classList.toggle("swsh-result-false", !nextgoodball);
   
   let nextresultAlpha = resultContainer.querySelector("[data-swsh-results-next-isbonuscount]");
   nextresultAlpha.textContent = result.next.isBonusCount ? "Bonus!" : "No Bonus";
-  nextresultAlpha.classList.toggle("swsh-result-true", result.next.bonus);
-  nextresultAlpha.classList.toggle("swsh-result-false", !result.next.bonus);
+  nextresultAlpha.classList.toggle("swsh-result-true", result.next.isBonusCount);
+  nextresultAlpha.classList.toggle("swsh-result-false", !result.next.isBonusCount);
 
   resultsArea.appendChild(resultContainer);
 }
