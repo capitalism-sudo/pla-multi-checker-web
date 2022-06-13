@@ -9,6 +9,9 @@ from ..pla.core import get_bdsp_sprite
 with open(RESOURCE_PATH + "resources/text_species_en.txt",encoding="utf-8") as text_species:
     SPECIES = text_species.read().split("\n")
 
+with open(RESOURCE_PATH + "resources/moves_en.txt",encoding="utf-8") as text_moves:
+    MOVES = text_moves.read().split("\n")
+
 def shiny_check(result):
     normal = result.regular_pokemon
     rare = result.rare_pokemon
@@ -42,11 +45,12 @@ def check_ug_advance(s0,s1,s2,s3,story_flag,room,version,advances,diglett):
                 "ability": mon.ability,
                 "gender": mon.gender,
                 "species": SPECIES[mon.species],
-                "eggmove": mon.egg_move,
+                "eggmove": MOVES[mon.egg_move],
                 "shiny": mon.shiny,
                 "sprite": get_bdsp_sprite(mon.species, mon.shiny),
                 "spawn": f"Spawn {z+1}",
-                "advances": advance
+                "advances": advance,
+                "rarespawn": False
             }
             full.append(monster)
         if rare is not None:
@@ -58,11 +62,12 @@ def check_ug_advance(s0,s1,s2,s3,story_flag,room,version,advances,diglett):
                 "ability": rare.ability,
                 "gender": rare.gender,
                 "species": SPECIES[rare.species],
-                "eggmove": rare.egg_move,
+                "eggmove": MOVES[rare.egg_move],
                 "shiny": rare.shiny,
                 "sprite": get_bdsp_sprite(rare.species, rare.shiny),
                 "spawn": "Rare",
-                "advances": advance
+                "advances": advance,
+                "rarespawn": True
             }
             full.append(monster)
         final[str(i)] = full

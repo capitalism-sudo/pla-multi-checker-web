@@ -259,8 +259,17 @@ function showResult(result) {
     result.advances;
   resultContainer.querySelector("[data-pla-results-nature]").textContent =
     result.nature;
+	
+  let gender = 'Male';
+  if (result.gender == 1){
+	  gender = 'Female';
+  }
+  else if (result.gender == 2){
+	  gender = 'Genderless';
+  }
+  
   resultContainer.querySelector("[data-pla-results-gender]").textContent =
-    result.gender;
+    gender;
   resultContainer.querySelector("[data-pla-results-ability]").textContent =
     result.ability;
   resultContainer.querySelector("[data-pla-results-egg]").textContent =
