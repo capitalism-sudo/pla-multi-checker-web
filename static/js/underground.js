@@ -248,10 +248,6 @@ function showResult(result) {
   resultContainer.querySelector("[data-pla-results-species]").innerHTML =
     result.species;
 
-  resultContainer.querySelector("[data-pla-results-advances]").textContent =
-	result.advances;
-  resultContainer.querySelector("[data-pla-results-shine]").textContent =
-	result.shiny;
   resultContainer.querySelector("[data-pla-results-spawn]").textContent =
 	result.spawn;
 	
