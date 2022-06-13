@@ -203,6 +203,8 @@ def update_swsh_seed():
 @app.route('/api/check-underground', methods=['POST'])
 def check_ug_seed():
 
+    filter_command = filter_commands.get(request.json['filter'], is_shiny)
+
     results = bdsp.check_ug_advance(request.json['s0'],
                                     request.json['s1'],
                                     request.json['s2'],
@@ -213,7 +215,7 @@ def check_ug_seed():
                                     request.json['advances'],
                                     request.json['diglett'])
 
-    return { "results": flatten_ug(results, config.get('FILTER_ON_SERVER', False)) }
+    return { "results": flatten_ug(results, config.get('FILTER_ON_SERVER', False), filter_command) }
 
 """
 # Legacy routes used by bots

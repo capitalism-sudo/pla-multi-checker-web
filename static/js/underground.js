@@ -34,6 +34,7 @@ const roomID = document.getElementById("roomid");
 const diglettMode = document.getElementById("diglett");
 
 // filters
+const distSelectFilter = document.getElementById("selectfilter");
 /*const distShinyOrAlphaCheckbox = document.getElementById(
   "mmoShinyOrAlphaFilter"
 );*/
@@ -189,6 +190,7 @@ function getOptions() {
     version: parseInt(gameVer.value),
     diglett: diglettMode.checked,
 	room: parseInt(roomID.value),
+	filter: distSelectFilter.value,
     //	inmap: inmapCheck.checked
   };
 }
