@@ -69,6 +69,7 @@ function loadPreferences() {
   advances.value = localStorage.getItem("advances") ?? "0";
   minAdv.value = localStorage.getItem("minadvances") ?? "0";
   storyFlag.value = localStorage.getItem("storyflags") ?? "6";
+  gameVer.value = localStorage.getItem("version") ?? "1";
 }
 
 function setupPreferenceSaving() {
@@ -83,6 +84,9 @@ function setupPreferenceSaving() {
   );
   storyFlag.addEventListener("change", (e) =>
     localStorage.setItem("storyflags", e.target.value)
+  );
+  gameVer.addEventListener("change", (e) =>
+	localStorage.setItem("version", e.target.value)
   );
 }
 
