@@ -32,6 +32,7 @@ const gameVer = document.getElementById("version");
 const storyFlag = document.getElementById("storyflags");
 const roomID = document.getElementById("roomid");
 const diglettMode = document.getElementById("diglett");
+const minAdv = document.getElementById("minadvances");
 
 // filters
 const distSelectFilter = document.getElementById("selectfilter");
@@ -64,33 +65,25 @@ const results = [];
 
 // Save and load user preferences
 function loadPreferences() {
-  /*maxDepth.value = localStorage.getItem("maxDepth") ?? "0";
-  distAlphaCheckbox.checked = readBoolFromStorage("mmoAlphaFilter", false);
   distShinyCheckbox.checked = readBoolFromStorage("mmoShinyFilter", false);
-  nightCheck.checked = readBoolFromStorage("nightToggle");
-  distShinyOrAlphaCheckbox.checked = readBoolFromStorage(
-    "mmoShinyOrAlphaFilter",
-    false
-  );
-  validateFilters();*/
+  advances.value = localStorage.getItem("advances") ?? "0";
+  minAdv.value = localStorage.getItem("minadvances") ?? "0";
+  storyFlag.value = localStorage.getItem("storyflags") ?? "6";
 }
 
 function setupPreferenceSaving() {
-  /*maxDepth.addEventListener("change", (e) =>
-    localStorage.setItem("maxDepth", e.target.value)
+  advances.addEventListener("change", (e) =>
+    localStorage.setItem("advances", e.target.value)
   );
-  distAlphaCheckbox.addEventListener("change", (e) =>
-    saveBoolToStorage("mmoAlphaFilter", e.target.checked)
+  minAdv.addEventListener("change", (e) =>
+    localStorage.setItem("minadvances", e.target.value)
   );
   distShinyCheckbox.addEventListener("change", (e) =>
     saveBoolToStorage("mmoShinyFilter", e.target.checked)
   );
-  distShinyOrAlphaCheckbox.addEventListener("change", (e) =>
-    saveBoolToStorage("mmoShinyOrAlpaFilter", e.target.checked)
+  storyFlag.addEventListener("change", (e) =>
+    localStorage.setItem("storyflags", e.target.value)
   );
-  nightCheck.addEventListener("change", (e) =>
-    saveBoolToStorage("nightCheck", e.target.checked)
-  );*/
 }
 
 /*function setupTabs() {
@@ -120,38 +113,15 @@ function openTab(evt, tabName) {
 
 function setFilter(event) {
   if (event.target.checked) {
-    /*if (event.target == distShinyOrAlphaCheckbox) {
-      distShinyCheckbox.checked = false;
-      distAlphaCheckbox.checked = false;
-    }*/
     if (event.target == distShinyCheckbox) {
       //distShinyOrAlphaCheckbox.checked = false;
     }
-    /*if (event.target == distAlphaCheckbox) {
-      distShinyOrAlphaCheckbox.checked = false;
-    }*/
   }
 
   showFilteredResults();
 }
 
 function validateFilters() {
-  /*let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
-  let shinyFilter = distShinyCheckbox.checked;
-  let alphaFilter = distAlphaCheckbox.checked;
-
-  if (shinyOrAlphaFilter) {
-    shinyFilter = false;
-    alphaFilter = false;
-  }
-
-  if (shinyFilter || alphaFilter) {
-    shinyOrAlphaFilter = false;
-  }
-
-  distShinyOrAlphaCheckbox.checked = shinyOrAlphaFilter;
-  distShinyCheckbox.checked = shinyFilter;
-  distAlphaCheckbox.checked = alphaFilter;*/
 }
 
 function filter(
@@ -160,9 +130,6 @@ function filter(
   speciesFilter,
   advanceFilter
 ) {
-  /*if (shinyOrAlphaFilter && !(result.shiny || result.alpha)) {
-    return false;
-  }*/
 
   console.log("advancefilter");
   console.log(advanceFilter);
@@ -170,10 +137,6 @@ function filter(
   if (shinyFilter && !result.shiny) {
     return false;
   }
-
-  /*if (alphaFilter && !result.alpha) {
-    return false;
-  }*/
 
   if (
     speciesFilter.length != 0 &&
@@ -204,6 +167,7 @@ function getOptions() {
     diglett: diglettMode.checked,
 	room: parseInt(roomID.value),
 	filter: distSelectFilter.value,
+	minadv: parseInt(minAdv.value),
     //	inmap: inmapCheck.checked
   };
 }
