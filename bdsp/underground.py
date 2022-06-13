@@ -36,8 +36,8 @@ def check_ug_advance(s0,s1,s2,s3,story_flag,room,version,advances,minadvances,di
         norm = result.regular_pokemon
         rare = result.rare_pokemon
         advance = result.advance
-        for z, mon in enumerate(norm):
-            if advance >= minadvances:
+        if advance >= minadvances:
+            for z, mon in enumerate(norm):
                 monster = {
                     "ec": f"{mon.ec:X}",
                     "pid": f"{mon.pid:X}",
@@ -71,7 +71,7 @@ def check_ug_advance(s0,s1,s2,s3,story_flag,room,version,advances,minadvances,di
                     "rarespawn": True
                 }
                 full.append(monster)
-        final[str(i)] = full
+            final[str(i)] = full
 
     return final
 
