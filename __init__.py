@@ -8,6 +8,7 @@ from .pla.data import hisuidex
 from .pla.saves import read_research, rolls_from_research
 from .pla.data.data_utils import *
 from .pla.filters import *
+from .bdsp.data.data_utils import flatten_ug
 from .swsh import *
 
 mimetypes.add_type('application/javascript', '.js')
@@ -48,6 +49,10 @@ def settings():
 @app.route("/cram")
 def cram():
     return render_template('pages/cram.html', title='Fun Tools')
+
+@app.route("/underground")
+def ug():
+    return render_template('pages/underground.html', title='Underground Checker')
 
 
 # API ROUTES
@@ -194,6 +199,21 @@ def update_swsh_seed():
                                         request.json['max'])
 
     return { "results": results }
+
+@app.route('/api/check-underground', methods=['POST'])
+def check_ug_seed():
+
+    results = bdsp.check_ug_advance(request.json['s0'],
+                                    request.json['s1'],
+                                    request.json['s2'],
+                                    request.json['s3'],
+                                    request.json['story'],
+                                    request.json['room'],
+                                    request.json['version'],
+                                    request.json['advances'],
+                                    request.json['diglett'])
+
+    return { "results": flatten_ug(results, config.get('FILTER_ON_SERVER', False)) }
 
 """
 # Legacy routes used by bots
