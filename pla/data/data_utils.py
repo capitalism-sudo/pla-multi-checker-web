@@ -1,4 +1,6 @@
 import json
+
+from bdsp.filters.filters import has_1ivs, has_2iv_over_30, has_2ivs, has_3iv_over_30, has_4iv_over_30, is_rare
 from ..filters import *
 
 # These are utility functions for understanding PLA data that are not generally used in the app
@@ -20,7 +22,15 @@ filter_commands = {
     "has_no_speed_5iv": has_no_speed_5iv,
     "has_no_speed_no_attack_4iv_over_30": has_no_speed_no_attack_4iv_over_30,
     "has_no_speed_no_attack_4iv": has_no_speed_no_attack_4iv,
-    "has_no_speed_no_attack": has_no_speed_no_attack
+    "has_no_speed_no_attack": has_no_speed_no_attack,
+    "has_3ivs": has_3ivs,
+    "has_4ivs": has_4ivs,
+    "has_1vs": has_1ivs,
+    "has_2ivs": has_2ivs,
+    "has_2iv_over_30": has_2iv_over_30,
+    "has_3iv_over_30": has_3iv_over_30,
+    "has_4iv_over_30": has_4iv_over_30,
+    "is_rare": is_rare
 }
 
 def encounter_names(map_name):
