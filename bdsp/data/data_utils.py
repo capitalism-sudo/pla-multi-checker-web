@@ -1,5 +1,5 @@
 import json
-from .bdsp.filters import *
+from ..filters import *
 
 def flatten_ug(results, filter_result = True, filter_function = is_shiny):
     res = []
