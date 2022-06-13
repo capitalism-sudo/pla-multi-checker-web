@@ -226,7 +226,7 @@ function showFilteredResults() {
   let speciesFilter = mmoSpeciesText.value;
   //let defaultFilter = distDefaultCheckbox.checked;
   //let multiFilter = distMultiCheckbox.checked;
-  let advanceFilter = advanceText.value;
+  let advanceFilter = parseInt(advanceText.value);
 
   const filteredResults = results.filter((result) =>
     filter(
