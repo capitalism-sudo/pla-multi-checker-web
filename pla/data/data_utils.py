@@ -25,7 +25,7 @@ filter_commands = {
     "has_no_speed_no_attack": has_no_speed_no_attack,
     "has_3ivs": has_3ivs,
     "has_4ivs": has_4ivs,
-    "has_1vs": has_1ivs,
+    "has_1ivs": has_1ivs,
     "has_2ivs": has_2ivs,
     "has_2iv_over_30": has_2iv_over_30,
     "has_3iv_over_30": has_3iv_over_30,
