@@ -184,7 +184,7 @@ function filter(
   
   if (
 	advanceFilter.length != 0 &&
-	result.advances != advanceFilter
+	result.advances != parseInt(advanceFilter)
   ) {
 	  return false;
   }
@@ -227,7 +227,7 @@ function showFilteredResults() {
   let speciesFilter = mmoSpeciesText.value;
   //let defaultFilter = distDefaultCheckbox.checked;
   //let multiFilter = distMultiCheckbox.checked;
-  let advanceFilter = parseInt(advanceText.value);
+  let advanceFilter = advanceText.value;
 
   const filteredResults = results.filter((result) =>
     filter(
