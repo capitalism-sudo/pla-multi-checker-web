@@ -1,7 +1,7 @@
 import json
 import struct
 import sys
-from .bdsp_ug_generator_py import generate_results, FilterPy
+from bdsp_ug_generator_py import generate_results, FilterPy
 from ..app import RESOURCE_PATH
 from ..pla.data import natures
 from ..pla.core import get_bdsp_sprite
