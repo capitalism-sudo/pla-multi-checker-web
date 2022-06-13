@@ -264,8 +264,30 @@ function showResult(result) {
   resultContainer.querySelector("[data-pla-results-spawn]").textContent =
 	result.spawn;
 	
-  resultContainer.querySelector("[data-pla-results-shiny]").innerHTML =
-    result.shiny;
+  let resultShiny = resultContainer.querySelector("[data-pla-results-shiny]");
+  let sparkle = "";
+  let sparklesprite = document.createElement("img");
+  sparklesprite.className = "pla-results-sparklesprite";
+  sparklesprite.src =
+    "data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E";
+  sparklesprite.height = "10";
+  sparklesprite.width = "10";
+  sparklesprite.style.cssText =
+    "pull-left;display:inline-block;margin-left:0px;";
+	
+  if (result.shiny) {
+    sparklesprite.src = "static/img/shiny.png";
+    sparkle = "Shiny!";
+  } else {
+    sparkle = "Not Shiny";
+  }
+  resultContainer
+    .querySelector("[data-pla-results-shinysprite]")
+    .appendChild(sparklesprite);
+  resultShiny.textContent = sparkle;
+  resultShiny.classList.toggle("pla-result-true", result.shiny);
+  resultShiny.classList.toggle("pla-result-false", !result.shiny);
+
   resultContainer.querySelector("[data-pla-results-adv]").textContent =
     result.advances;
   resultContainer.querySelector("[data-pla-results-nature]").textContent =
@@ -292,138 +314,9 @@ function showResult(result) {
     result.ability;
   resultContainer.querySelector("[data-pla-results-egg]").textContent =
     result.eggmove;
-  /*resultContainer.querySelector("[data-pla-results-ec]").textContent =
-    result.ec;
-  resultContainer.querySelector("[data-pla-results-pid]").textContent =
-    result.pid;*/
-
-  //showPokemonInformation(resultContainer, result);
+	
   showPokemonIVs(resultContainer, result);
   showPokemonHiddenInformation(resultContainer, result);
 
   resultsArea.appendChild(resultContainer);
 }
-  
-
-/*function checkUnderground() {
-	
-	const options = getOptions()
-	
-	fetch("/api/check-underground", {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(options),
-	})
-	  .then((response) => response.json())
-	  .then((res) => showFilteredResults(res))
-	  .catch((error) => {});
-}
-
-function showFilteredResults(results) {
-  /*validateFilters();
-
-  let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
-  let shinyFilter = distShinyCheckbox.checked;
-  let alphaFilter = distAlphaCheckbox.checked;
-  let speciesFilter = mmoSpeciesText.value;
-
-  const filteredResults = results.filter((result) =>
-    filter(result, shinyOrAlphaFilter, shinyFilter, alphaFilter, speciesFilter)
-  );
-
-	console.log(results);
-    resultsArea.innerHTML =
-      "<section><h3>D = Despawn. Despawn Multiple Pokemon by either Multibattles (for aggressive) or Scaring (for skittish) pokemon.</h3></section>";
-    //filteredResults.forEach((result) => showResult(result));
-	for (const [key,value] of Object.entries(results)) {
-		console.log(key);
-		console.log(value);
-		for (const [k,v] of Object.entries(value)) {
-			console.log(k);
-			console.log(v);
-			v.forEach((result) => showResult(result));
-		}
-	}
-}
-
-function showResult(result) {
-	console.log(result)
-  if (distShinyCheckbox.checked && result.shiny) {
-  const resultContainer = resultTemplate.content.cloneNode(true);
-  
-  let sprite = document.createElement("img");
-  sprite.src = "static/img/spritebig/" + result.sprite;
-  resultContainer.querySelector(".pla-results-sprite").appendChild(sprite);
-  
-  resultContainer.querySelector("[data-pla-results-species]").innerHTML =
-    result.species;
-
-  resultContainer.querySelector("[data-pla-results-advances]").textContent =
-	result.advances;
-  resultContainer.querySelector("[data-pla-results-shine]").textContent =
-	result.shiny;
-	
-  resultContainer.querySelector("[data-pla-results-shiny]").innerHTML =
-    result.shiny;
-  resultContainer.querySelector("[data-pla-results-adv]").textContent =
-    result.advances;
-  resultContainer.querySelector("[data-pla-results-nature]").textContent =
-    result.nature;
-  resultContainer.querySelector("[data-pla-results-gender]").textContent =
-    result.gender;
-  resultContainer.querySelector("[data-pla-results-ability]").textContent =
-    result.ability;
-  resultContainer.querySelector("[data-pla-results-egg]").textContent =
-    result.eggmove;
-  /*resultContainer.querySelector("[data-pla-results-ec]").textContent =
-    result.ec;
-  resultContainer.querySelector("[data-pla-results-pid]").textContent =
-    result.pid;
-
-  //showPokemonInformation(resultContainer, result);
-  showPokemonIVs(resultContainer, result);
-  showPokemonHiddenInformation(resultContainer, result);
-
-  resultsArea.appendChild(resultContainer);
-  }
-  else if (!distShinyCheckbox.checked) {
-	  const resultContainer = resultTemplate.content.cloneNode(true);
-  
-  let sprite = document.createElement("img");
-  sprite.src = "static/img/spritebig/" + result.sprite;
-  resultContainer.querySelector(".pla-results-sprite").appendChild(sprite);
-  
-  resultContainer.querySelector("[data-pla-results-species]").innerHTML =
-    result.species;
-
-  resultContainer.querySelector("[data-pla-results-advances]").textContent =
-	result.advances;
-  resultContainer.querySelector("[data-pla-results-shine]").textContent =
-	result.shiny;
-  resultContainer.querySelector("[data-pla-results-spawn]").textContent =
-	result.spawn;
-	
-  resultContainer.querySelector("[data-pla-results-shiny]").innerHTML =
-    result.shiny;
-  resultContainer.querySelector("[data-pla-results-adv]").textContent =
-    result.advances;
-  resultContainer.querySelector("[data-pla-results-nature]").textContent =
-    result.nature;
-  resultContainer.querySelector("[data-pla-results-gender]").textContent =
-    result.gender;
-  resultContainer.querySelector("[data-pla-results-ability]").textContent =
-    result.ability;
-  resultContainer.querySelector("[data-pla-results-egg]").textContent =
-    result.eggmove;
-  /*resultContainer.querySelector("[data-pla-results-ec]").textContent =
-    result.ec;
-  resultContainer.querySelector("[data-pla-results-pid]").textContent =
-    result.pid;
-
-  //showPokemonInformation(resultContainer, result);
-  showPokemonIVs(resultContainer, result);
-  showPokemonHiddenInformation(resultContainer, result);
-
-  resultsArea.appendChild(resultContainer);
-  }
-}*/
