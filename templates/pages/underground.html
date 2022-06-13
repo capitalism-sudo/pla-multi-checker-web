@@ -152,8 +152,8 @@
 
 {% block templates %}
     <template data-pla-results-template>
-	<details>
-	<summary>Advance: <span data-pla-results-advances></span> Shiny: <span data-pla-results-shine></span> <span data-pla-results-spawn></span></summary>
+	<!--<details>
+	<summary>Advance: <span data-pla-results-advances></span> Shiny: <span data-pla-results-shine></span> <span data-pla-results-spawn></span></summary>-->
         <div class="pla-results-item" data-pla-results-template>
             <ul class="pla-results-heading pla-results-ul">
                 <li class="pla-results-sprite" data-pla-results-sprite></li>
@@ -166,6 +166,8 @@
             
 			<ul class="pla-results-ul">
 				<li><span class="pla-results-label">Advances:</span> <span data-pla-results-adv></span></li>
+				<li><span class="pla-results-label">Spawn: </span> <span data-pla-results-spawn></span></li>
+
 			</ul>
 
             <ul class="pla-results-ul">
@@ -195,7 +197,6 @@
                 </ul>
             </div>
          </div>
-		 </details>
 		 </template>
 {% endblock %}
 
