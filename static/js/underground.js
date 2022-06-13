@@ -41,11 +41,13 @@ const distSelectFilter = document.getElementById("selectfilter");
 const distShinyCheckbox = document.getElementById("mmoShinyFilter");
 //const distAlphaCheckbox = document.getElementById("mmoAlphaFilter");
 const mmoSpeciesText = document.getElementById("mmoSpeciesFilter");
+const advanceText = document.getElementById("advanceFilter");
 
 //distShinyOrAlphaCheckbox.addEventListener("change", setFilter);
 distShinyCheckbox.addEventListener("change", setFilter);
 //distAlphaCheckbox.addEventListener("change", setFilter);
 mmoSpeciesText.addEventListener("input", setFilter);
+advanceText.addEventListener("input", setFilter);
 
 // actions
 const checkUGButton = document.getElementById("pla-button-checkug");
@@ -155,7 +157,8 @@ function validateFilters() {
 function filter(
   result,
   shinyFilter,
-  speciesFilter
+  speciesFilter,
+  advanceFilter
 ) {
   /*if (shinyOrAlphaFilter && !(result.shiny || result.alpha)) {
     return false;
@@ -174,6 +177,13 @@ function filter(
     !result.species.toLowerCase().includes(speciesFilter.toLowerCase())
   ) {
     return false;
+  }
+  
+  if (
+	advanceFilter.length != 0 &&
+	!result.advances == advanceFilter
+  ) {
+	  return false;
   }
 
   return true;
@@ -216,12 +226,14 @@ function showFilteredResults() {
   let speciesFilter = mmoSpeciesText.value;
   //let defaultFilter = distDefaultCheckbox.checked;
   //let multiFilter = distMultiCheckbox.checked;
+  let advanceFilter = advanceText.value;
 
   const filteredResults = results.filter((result) =>
     filter(
       result,
       shinyFilter,
-      speciesFilter
+      speciesFilter,
+	  advanceFilter
     )
   );
 

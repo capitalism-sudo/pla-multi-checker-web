@@ -96,6 +96,7 @@
 		<div class="pla-control">
 			<label for="selectfilter">Select Filter:</label>
 			<select id="selectfilter">
+				<option value="no_filter">No Filter</option>
 				<option value="is_shiny">Shiny Only</option>
 				<option value="is_rare">Rare Slot Only</option>
 				<option value="has_1ivs">1+IV Only</option>
@@ -146,6 +147,11 @@
         <div class="pla-control">
             <label for="mmoSpeciesFilter">Species Filter:</label>
             <input type="text" id="mmoSpeciesFilter">
+        </div>
+		
+		<div class="pla-control">
+            <label for="advanceFilter">Advance Filter:</label>
+            <input type="number" id="advanceFilter">
         </div>
     </section>
 {% endblock %}

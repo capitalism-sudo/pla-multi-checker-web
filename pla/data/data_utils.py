@@ -30,7 +30,8 @@ filter_commands = {
     "has_2iv_over_30": has_2iv_over_30,
     "has_3iv_over_30": has_3iv_over_30,
     "has_4iv_over_30": has_4iv_over_30,
-    "is_rare": is_rare
+    "is_rare": is_rare,
+    "no_filter": no_filter
 }
 
 def encounter_names(map_name):

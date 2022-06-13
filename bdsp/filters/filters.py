@@ -1,4 +1,8 @@
 # Filters
+
+def no_filter(pokemon):
+    return True
+    
 def is_shiny(pokemon):
     return pokemon['shiny'] == True
 
