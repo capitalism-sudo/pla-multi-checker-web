@@ -180,7 +180,7 @@ function filter(
   }
   
   if (
-	advanceFilter.length != 0 &&
+	advanceFilter != 0 &&
 	!result.advances == advanceFilter
   ) {
 	  return false;
