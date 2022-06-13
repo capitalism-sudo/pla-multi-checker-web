@@ -1,6 +1,6 @@
 from typing import Union
-from pla.data.gender import Gender
-from pla.data.pokedex import DexEntry
+from .pla.data.gender import Gender
+from .pla.data.pokedex import DexEntry
 
 # This might not be the best place for these functions, but collecting them here for now
 def get_sprite(pokemon: DexEntry, shiny: bool = False, gender: Union[Gender, None] = None):
