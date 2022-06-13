@@ -164,6 +164,9 @@ function filter(
     return false;
   }*/
 
+  console.log("advancefilter");
+  console.log(advanceFilter);
+  
   if (shinyFilter && !result.shiny) {
     return false;
   }
@@ -180,8 +183,8 @@ function filter(
   }
   
   if (
-	advanceFilter.length != 0 &&
-	!result.advances == advanceFilter
+	advanceFilter != 0 &&
+	result.advances != advanceFilter
   ) {
 	  return false;
   }
@@ -218,8 +221,6 @@ function checkUnderground() {
 function showFilteredResults() {
   //validateFilters();
   
-  console.log(results);
-
   //let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
   let shinyFilter = distShinyCheckbox.checked;
   //let alphaFilter = distAlphaCheckbox.checked;
