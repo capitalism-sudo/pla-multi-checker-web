@@ -5,7 +5,7 @@ def filt(result, filter):
         return False
     elif filter['isBonusCount'] and not result['isBonusCount']:
         return False
-    elif filter['isApricorn'] and not result['ballRoll'] == 99 and not result['isSafariSport']:
+    elif filter['isApricorn'] and not result['balltype'] == "Apricorn Ball":
         return False
     else:
         return True
