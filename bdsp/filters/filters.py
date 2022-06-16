@@ -6,6 +6,9 @@ def no_filter(pokemon):
 def is_shiny(pokemon):
     return pokemon['shiny'] == True
 
+def is_square(pokemon):
+    return pokemon['square'] == True
+
 def is_square_shiny(pokemon):
     return pokemon['square'] == True
 
@@ -91,3 +94,17 @@ def has_no_speed_no_attack_4iv_over_30(pokemon):
 
 def has_no_speed_no_attack_4iv(pokemon):
     return no_speed(pokemon) and no_attack(pokemon) and has_4ivs(pokemon)
+
+
+#IV Filters
+
+def compare_single_iv(miniv, maxiv, iv):
+    return miniv <= iv <= maxiv
+
+def compare_all_ivs(minivs, maxivs, ivs):
+    for i in range(6):
+        
+        if not compare_single_iv(int(minivs[i]), int(maxivs[i]), int(ivs[i])):
+            return False
+    
+    return True

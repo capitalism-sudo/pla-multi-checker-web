@@ -10,6 +10,7 @@ from .pla.data.data_utils import *
 from .pla.filters import *
 from .bdsp.data.data_utils import flatten_ug
 from .swsh import *
+from .bdsp import *
 
 mimetypes.add_type('application/javascript', '.js')
 mimetypes.add_type('application/javascript', '.mjs')
@@ -48,11 +49,27 @@ def settings():
 
 @app.route("/cram")
 def cram():
-    return render_template('pages/cram.html', title='Fun Tools')
+    return render_template('pages/cram.html', title='Fun Tools', swsh="true")
 
 @app.route("/underground")
 def ug():
-    return render_template('pages/underground.html', title='Underground Checker')
+    return render_template('pages/underground.html', title='Underground Checker', bdsp="true")
+
+@app.route("/bdspstationary")
+def bdsp_stationary():
+    return render_template('pages/b_stationary.html', title='Stationary Checker', bdsp="true")
+
+@app.route("/bdspwild")
+def bwild():
+    return render_template('pages/b_wild.html', title='Wild Checker', bdsp="true")
+
+@app.route("/bdsproamer")
+def broamer():
+    return render_template('pages/b_roamer.html', title='Roamer Checker', bdsp="true")
+
+@app.route("/bdspegg")
+def begg():
+    return render_template('pages/b_egg.html', title='Egg Checker', bdsp="true")
 
 
 # API ROUTES
@@ -217,6 +234,65 @@ def check_ug_seed():
                                     request.json['diglett'])
 
     return { "results": flatten_ug(results, config.get('FILTER_ON_SERVER', False), filter_command) }
+
+@app.route('/api/check-bdsp-stationary', methods=['POST'])
+def check_bdsp_stationary():
+
+    filter_command = filter_commands.get(request.json['command'], is_shiny)
+
+    states = [request.json['s0'], request.json['s1'], request.json['s2'], request.json['s3']]
+
+    results = bdsp.read_stationary_seed(states,
+                                        request.json['filter'],
+                                        request.json['fixed_ivs'],
+                                        request.json['set_gender'],
+                                        request.json['species'],
+                                        request.json['delay'])
+    
+    return { "results": flatten_bdsp_stationary(results, config.get('FILTER_ON_SERVER', False), filter_command) }
+
+@app.route('/api/check-bdsp-wild', methods=['POST'])
+def check_bdsp_wild():
+
+    filter_command = filter_commands.get(request.json['command'], is_shiny)
+
+    states = [request.json['s0'], request.json['s1'], request.json['s2'], request.json['s3']]
+
+    results = bdsp.read_wild_seed(states,
+                                request.json['filter'],
+                                request.json['set_gender'],
+                                request.json['delay'])
+    
+    return { "results": flatten_bdsp_stationary(results, config.get('FILTER_ON_SERVER', False), filter_command) }
+
+@app.route('/api/check-bdsp-roamer', methods=['POST'])
+def check_bdsp_roamer():
+
+    filter_command = filter_commands.get(request.json['command'], is_shiny)
+
+    states = [request.json['s0'], request.json['s1'], request.json['s2'], request.json['s3']]
+
+    results = bdsp.read_roamer_seed(states,
+                                    request.json['filter'],
+                                    request.json['fixed_ivs'],
+                                    request.json['set_gender'],
+                                    request.json['delay'])
+    
+    return { "results": flatten_bdsp_stationary(results, config.get('FILTER_ON_SERVER', False), filter_command) }
+
+@app.route('/api/check-bdsp-egg', methods=['POST'])
+def check_bdsp_egg():
+
+    filter_command = filter_commands.get(request.json['command'], is_shiny)
+
+    states = [request.json['s0'], request.json['s1'], request.json['s2'], request.json['s3']]
+
+    results = bdsp.read_egg_seed(states,
+                            request.json['filter'],
+                            request.json['daycare'],
+                            request.json['delay'])
+    
+    return { "results": flatten_bdsp_stationary(results, config.get('FILTER_ON_SERVER', False), filter_command) }
 
 """
 # Legacy routes used by bots

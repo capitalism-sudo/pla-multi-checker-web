@@ -35,3 +35,21 @@ def flatten_ug_pokemon(results, filter_result, filter_function):
         return [results]
     else:
         return []
+
+def flatten_bdsp_stationary(results, filter_results, filter_function=is_shiny):
+
+    res = []
+
+    for value in results.values():
+        res.extend(flatten_bdsp_stationary_advance(value, filter_results, filter_function))
+    
+    return res
+
+def flatten_bdsp_stationary_advance(results, filter_results, filter_function):
+
+    if filter_results and filter_function(results):
+        return [results]
+    elif not filter_results:
+        return [results]
+    else:
+        return []

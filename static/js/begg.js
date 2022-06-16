@@ -28,36 +28,75 @@ const inputS1 = document.getElementById("inputs1");
 const inputS2 = document.getElementById("inputs2");
 const inputS3 = document.getElementById("inputs3");
 const advances = document.getElementById("advances");
-const gameVer = document.getElementById("version");
-const storyFlag = document.getElementById("storyflags");
-const roomID = document.getElementById("roomid");
-const diglettMode = document.getElementById("diglett");
 const minAdv = document.getElementById("minadvances");
+const delay = document.getElementById("delay");
+const mMethod = document.getElementById("masuda");
+const shinyCharm = document.getElementById("shinycharm");
+const ovalCharm = document.getElementById("ovalcharm");
+const TID = document.getElementById("tid");
+const SID = document.getElementById("sid");
+
+//Parent Options
+
+const compatibility = document.getElementById("compat");
+const aNature = document.getElementById("a_nature");
+const bNature = document.getElementById("b_nature");
+const aDitto = document.getElementById("a_ditto");
+const bDitto = document.getElementById("b_ditto");
+const aItem = document.getElementById("a_item");
+const bItem = document.getElementById("b_item");
+const genderRatio = document.getElementById("genderratio");
+
+//IVs
+
+const minHP = document.getElementById("minhp");
+const minATK = document.getElementById("minatk");
+const minDEF = document.getElementById("mindef");
+const minSPA = document.getElementById("minspa");
+const minSPD = document.getElementById("minspd");
+const minSPE = document.getElementById("minspe");
+
+const maxHP = document.getElementById("maxhp");
+const maxATK = document.getElementById("maxatk");
+const maxDEF = document.getElementById("maxdef");
+const maxSPA = document.getElementById("maxspa");
+const maxSPD = document.getElementById("maxspd");
+const maxSPE = document.getElementById("maxspe");
+
+const a_HP = document.getElementById("a_hp");
+const a_ATK = document.getElementById("a_atk");
+const a_DEF = document.getElementById("a_def");
+const a_SPA = document.getElementById("a_spa");
+const a_SPD = document.getElementById("a_spd");
+const a_SPE = document.getElementById("a_spe");
+
+const b_HP = document.getElementById("b_hp");
+const b_ATK = document.getElementById("b_atk");
+const b_DEF = document.getElementById("b_def");
+const b_SPA = document.getElementById("b_spa");
+const b_SPD = document.getElementById("b_spd");
+const b_SPE = document.getElementById("b_spe");
 
 // filters
 const distSelectFilter = document.getElementById("selectfilter");
-/*const distShinyOrAlphaCheckbox = document.getElementById(
-  "mmoShinyOrAlphaFilter"
-);*/
 const distShinyCheckbox = document.getElementById("mmoShinyFilter");
-//const distAlphaCheckbox = document.getElementById("mmoAlphaFilter");
-const mmoSpeciesText = document.getElementById("mmoSpeciesFilter");
-const advanceText = document.getElementById("advanceFilter");
+const natureSelect = document.getElementById("naturefilter");
+//const genderRatio = document.getElementById("genderratio");
 
-//distShinyOrAlphaCheckbox.addEventListener("change", setFilter);
 distShinyCheckbox.addEventListener("change", setFilter);
-//distAlphaCheckbox.addEventListener("change", setFilter);
-mmoSpeciesText.addEventListener("input", setFilter);
-advanceText.addEventListener("input", setFilter);
+natureSelect.addEventListener("change", setFilter);
+//genderRatio.addEventListener("change", setFilter);
 
 // actions
-const checkUGButton = document.getElementById("pla-button-checkug");
-checkUGButton.addEventListener("click", checkUnderground);
+const checkEggButton = document.getElementById("pla-button-checkegg");
+checkEggButton.addEventListener("click", checkEgg);
 
 loadPreferences();
 setupPreferenceSaving();
 setupExpandables();
-//setupTabs();
+setupTabs();
+document.getElementById("defaultOpen").click();
+
 
 const results = [];
 
@@ -66,31 +105,35 @@ const results = [];
 // Save and load user preferences
 function loadPreferences() {
   distShinyCheckbox.checked = readBoolFromStorage("mmoShinyFilter", false);
-  advances.value = localStorage.getItem("advances") ?? "0";
-  minAdv.value = localStorage.getItem("minadvances") ?? "0";
-  storyFlag.value = localStorage.getItem("storyflags") ?? "6";
-  gameVer.value = localStorage.getItem("version") ?? "1";
+  advances.value = 10000;
+  minAdv.value = 0;
+  minHP.value = 0;
+  minATK.value = 0;
+  minDEF.value = 0;
+  minSPA.value = 0;
+  minSPD.value = 0;
+  minSPE.value = 0;
+  
+  maxHP.value = 31;
+  maxATK.value = 31;
+  maxDEF.value = 31;
+  maxSPA.value = 31;
+  maxSPD.value = 31;
+  maxSPE.value = 31;
+  
+  delay.value = 0;
+  
+  natureSelect.value = "any";
+  
 }
 
 function setupPreferenceSaving() {
-  advances.addEventListener("change", (e) =>
-    localStorage.setItem("advances", e.target.value)
-  );
-  minAdv.addEventListener("change", (e) =>
-    localStorage.setItem("minadvances", e.target.value)
-  );
   distShinyCheckbox.addEventListener("change", (e) =>
     saveBoolToStorage("mmoShinyFilter", e.target.checked)
   );
-  storyFlag.addEventListener("change", (e) =>
-    localStorage.setItem("storyflags", e.target.value)
-  );
-  gameVer.addEventListener("change", (e) =>
-	localStorage.setItem("version", e.target.value)
-  );
 }
 
-/*function setupTabs() {
+function setupTabs() {
   document.querySelectorAll(".tablinks").forEach((element) => {
     element.addEventListener("click", (event) =>
       openTab(event, element.dataset.plaTabFor)
@@ -113,13 +156,10 @@ function openTab(evt, tabName) {
 
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
-}*/
+}
 
 function setFilter(event) {
   if (event.target.checked) {
-    if (event.target == distShinyCheckbox) {
-      //distShinyOrAlphaCheckbox.checked = false;
-    }
   }
 
   showFilteredResults();
@@ -131,30 +171,34 @@ function validateFilters() {
 function filter(
   result,
   shinyFilter,
-  speciesFilter,
-  advanceFilter
+  natureFilter,
 ) {
 
-  console.log("advancefilter");
-  console.log(advanceFilter);
   
   if (shinyFilter && !result.shiny) {
     return false;
   }
 
-  if (
+  /*if (
     speciesFilter.length != 0 &&
     !result.species.toLowerCase().includes(speciesFilter.toLowerCase())
   ) {
     return false;
-  }
+  }*/
   
   if (
+	natureFilter != "any" &&
+	result.nature.toLowerCase() != natureFilter.toLowerCase()
+	) {
+		return false;
+	}
+  
+  /*if (
 	advanceFilter.length != 0 &&
 	result.advances != parseInt(advanceFilter)
   ) {
 	  return false;
-  }
+  }*/
 
   return true;
 }
@@ -165,44 +209,59 @@ function getOptions() {
 	s1: inputS1.value,
 	s2: inputS2.value,
 	s3: inputS3.value,
-    advances: parseInt(advances.value),
-    story: parseInt(storyFlag.value),
-    version: parseInt(gameVer.value),
-    diglett: diglettMode.checked,
-	room: parseInt(roomID.value),
-	filter: distSelectFilter.value,
-	minadv: parseInt(minAdv.value),
-    //	inmap: inmapCheck.checked
+	filter: {
+		maxadv: parseInt(advances.value),
+		minadv: parseInt(minAdv.value),
+		minivs: [minHP.value, minATK.value, minDEF.value, minSPA.value, minSPD.value, minSPE.value],
+		maxivs: [maxHP.value, maxATK.value, maxDEF.value, maxSPA.value, maxSPD.value, maxSPE.value],
+	},
+	daycare: {
+		oval_charm: ovalCharm.checked,
+		shiny_charm: shinyCharm.checked,
+		tid: parseInt(TID.value),
+		sid: parseInt(SID.value),
+		compatibility: parseInt(compatibility.value),
+		a_ivs: [parseInt(a_HP.value), parseInt(a_ATK.value), parseInt(a_DEF.value), parseInt(a_SPA.value), parseInt(a_SPD.value), parseInt(a_SPE.value)],
+		b_ivs: [parseInt(b_HP.value), parseInt(b_ATK.value), parseInt(b_DEF.value), parseInt(b_SPA.value), parseInt(b_SPD.value), parseInt(b_SPE.value)],
+		a_item: parseInt(aItem.value),
+		b_item: parseInt(bItem.value),
+		masuda: mMethod.checked,
+		nido_volbeat: false,
+		a_nature: aNature.value,
+		b_nature: bNature.value,
+		a_ability: 0,
+		b_ability: 1,
+		a_ditto: aDitto.checked,
+		b_ditto: bDitto.checked,
+		gender_ratio: parseInt(genderRatio.value),
+	},
+	species: 0,
+	command: distSelectFilter.value,
+	delay: parseInt(delay.value),
   };
 }
 
-function checkUnderground() {
+function checkEgg() {
   doSearch(
-    "/api/check-underground",
+    "/api/check-bdsp-egg",
     results,
     getOptions(),
     showFilteredResults,
-    checkUGButton
+    checkEggButton
   );
 }
 
 function showFilteredResults() {
   //validateFilters();
   
-  //let shinyOrAlphaFilter = distShinyOrAlphaCheckbox.checked;
   let shinyFilter = distShinyCheckbox.checked;
-  //let alphaFilter = distAlphaCheckbox.checked;
-  let speciesFilter = mmoSpeciesText.value;
-  //let defaultFilter = distDefaultCheckbox.checked;
-  //let multiFilter = distMultiCheckbox.checked;
-  let advanceFilter = advanceText.value;
+  let natureFilter = natureSelect.value;
 
   const filteredResults = results.filter((result) =>
     filter(
       result,
       shinyFilter,
-      speciesFilter,
-	  advanceFilter
+      natureFilter
     )
   );
 
@@ -221,16 +280,6 @@ function showFilteredResults() {
 
 function showResult(result) {
   const resultContainer = resultTemplate.content.cloneNode(true);
-  
-  let sprite = document.createElement("img");
-  sprite.src = "static/img/spritebig/" + result.sprite;
-  resultContainer.querySelector(".pla-results-sprite").appendChild(sprite);
-  
-  resultContainer.querySelector("[data-pla-results-species]").innerHTML =
-    result.species;
-
-  resultContainer.querySelector("[data-pla-results-spawn]").textContent =
-	result.spawn;
 	
   let resultShiny = resultContainer.querySelector("[data-pla-results-shiny]");
   let sparkle = "";
@@ -243,7 +292,11 @@ function showResult(result) {
   sparklesprite.style.cssText =
     "pull-left;display:inline-block;margin-left:0px;";
 	
-  if (result.shiny) {
+  if (result.shiny && result.square) {
+	sparklesprite.src = "static/img/square.png";
+	sparkle = "Square Shiny!";
+  }
+  else if (result.shiny) {
     sparklesprite.src = "static/img/shiny.png";
     sparkle = "Shiny!";
   } else {
@@ -255,18 +308,23 @@ function showResult(result) {
   resultShiny.textContent = sparkle;
   resultShiny.classList.toggle("pla-result-true", result.shiny);
   resultShiny.classList.toggle("pla-result-false", !result.shiny);
+  
+  let totalAdvance = result.adv;
 
   resultContainer.querySelector("[data-pla-results-adv]").textContent =
-    result.advances;
+    totalAdvance;
+  resultContainer.querySelector("[data-pla-results-eseed]").textContent =
+    result.seed.toString(16).toUpperCase();
   resultContainer.querySelector("[data-pla-results-nature]").textContent =
     result.nature;
 	
   let gender = 'male';
-  if (result.gender == 1){
-	  gender = 'female';
-  }
-  else if (result.gender == 2){
+  
+  if (result.gender == 2) {
 	  gender = 'genderless';
+  }
+  else if (result.gender == 1) {
+	  gender = 'female';
   }
   
   const genderStrings = {
@@ -280,8 +338,6 @@ function showResult(result) {
 
   resultContainer.querySelector("[data-pla-results-ability]").textContent =
     result.ability;
-  resultContainer.querySelector("[data-pla-results-egg]").textContent =
-    result.eggmove;
 	
   showPokemonIVs(resultContainer, result);
   showPokemonHiddenInformation(resultContainer, result);
