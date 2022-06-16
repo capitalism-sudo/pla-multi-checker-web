@@ -8,7 +8,7 @@ from .pla.data import hisuidex
 from .pla.saves import read_research, rolls_from_research
 from .pla.data.data_utils import *
 from .pla.filters import *
-from .bdsp.data.data_utils import flatten_ug
+from .bdsp.data.data_utils import flatten_ug, flatten_bdsp_stationary
 from .swsh import *
 from .bdsp import *
 
