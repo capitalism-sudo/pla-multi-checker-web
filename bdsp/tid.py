@@ -1,5 +1,5 @@
 from .core import generate_tid
-from pla.rng import Xorshift
+from ..pla.rng import Xorshift
 
 filtertype = {
     "-1": None,
