@@ -25,6 +25,7 @@
 					}
 				});
 				$('#' + id).html(html_code);
+				$('#' + id).trigger("chosen:updated");
 			});
 		}
 		get_json_data('frpokemon',0);
@@ -36,7 +37,7 @@
 			} else {
 				$('#brpokemon').html('<option value="">Select Second Round Species</option>');
 			}
-		});
+		})
 
 		$(document).on('change', '#normalcheckbox', function() {
 			var outbreaktype = $(this).prop('checked');
@@ -54,6 +55,29 @@
 			}
 			$('#frspawns').html(html_code2);
 		});
+		
+	$(function() {
+	$(".chosen-select").chosen({
+		no_results_text: "Oops, nothing found!",
+		inherit_select_classes: true
+	});
+	
+	$(".chosen-select-single").chosen({
+		width: "75%",
+		inherit_select_classes: true
+		
+	});
+		
+	/*$('#frpokemon').chosen().change(function() {
+		var brand_id = $(this).val();
+			if (brand_id != '') {
+				get_json_data('brpokemon', brand_id);
+			} else {
+				$('#brpokemon').html('<option value="">Select Second Round Species</option>');
+			}
+		});*/
+		
+	});
 	});
 	</script>
 {% endblock %}
@@ -81,7 +105,7 @@
 
         <div class="pla-control">
             <label for="frpokemon">First Round Pokemon</label>
-            <select name="frpokemon" id="frpokemon" class="form-control">
+            <select name="frpokemon" id="frpokemon" class="form-control chosen-select-single">
                 <option value="">Select Pokemon</option>
             </select>
         </div>
@@ -101,7 +125,7 @@
 
         <div class="pla-control" data-pla-bonus-round>
             <label for="brpokemon">Bonus Round Pokemon</label>
-            <select name="brpokemon" id="brpokemon" class="form-control">
+            <select name="brpokemon" id="brpokemon" class="form-control chosen-select-single">
                 <option value="">Select Pokemon</option>
             </select>
         </div>
