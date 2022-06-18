@@ -541,3 +541,42 @@ export function disableUntilRestore(buttonElement) {
     buttonElement.disabled = false;
   };
 }
+
+export function getSelectValues(select) {
+	var res = []
+	var options = select && select.options;
+	var opt;
+	
+	for (var i=0, iLen=options.length; i<iLen; i++) {
+		opt = options[i];
+		
+		if (opt.selected) {
+			res.push(opt.value || opt.text);
+		}
+	}
+	
+	return res;
+}
+
+export function setupIVBox() {
+	document.querySelectorAll(".ivbox").forEach((element) => {
+		element.addEventListener("click", (event) =>
+			setivVal(event, element)
+		);
+	});
+}
+
+export function setivVal(evt, elementName) {
+	if (event.ctrlKey && event.shiftKey) {
+		elementName.value = 30;
+	}
+	else if (event.ctrlKey) {
+		elementName.value = 31;
+	}
+	else if (event.shiftKey) {
+		elementName.value = 0;
+	}
+	else {
+		elementName.value = 0;
+	}
+}
