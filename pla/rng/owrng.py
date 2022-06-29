@@ -1,4 +1,3 @@
-from sre_parse import State
 import z3
 from .xoroshiro import *
 
