@@ -1,13 +1,10 @@
 import json
-
-from ...bdsp.filters.filters import *
-from ..filters import *
-
-# These are utility functions for understanding PLA data that are not generally used in the app
-map_names = ['AlabasterIcelands', 'CobaltCoastlands', 'CoronetHighlands', 'CrimsonMirelands', 'ObsidianFieldlands']
+from pla.filters import *
+from bdsp.filters import *
 
 filter_commands = {
     "is_shiny": is_shiny,
+    "is_square": is_square,
     "is_alpha": is_alpha,
     "is_perfect": is_perfect,
     "has_5ivs": has_5ivs,
@@ -34,6 +31,9 @@ filter_commands = {
     "no_filter": no_filter
 }
 
+# These are utility functions for understanding PLA data that are not generally used in the app
+map_names = ['AlabasterIcelands', 'CobaltCoastlands', 'CoronetHighlands', 'CrimsonMirelands', 'ObsidianFieldlands']
+
 def encounter_names(map_name):
     """Get a set of all the pokemon that are encountered on the map"""
     m1 = json.load(open(f'static/resources/{map_name}.json'))
@@ -55,7 +55,7 @@ def all_mmo_pokemon():
     return set([m['name'] for b in mmo.values() for m in b])
 
 # functions for manipulating data returned by search functions
-def flatten_all_map_mmo_results(results, filter_results=True, filter_function=is_shiny):
+def flatten_all_mmo_results(results, filter_results=True, filter_function=is_shiny):
     res = []
 
     for map_results in results.values():
@@ -95,3 +95,17 @@ def flatten_multi(results, filter_results=True, filter_function=is_shiny):
         return list(filter(filter_function, results))
     else:
         return results
+
+def flatten_overworld(results, filter_results=True, filter_function=is_shiny):
+
+    res = []
+
+    for result in results.values():
+        res.extend(flatten_overworld_advance(result, filter_results, filter_function))
+
+    return res
+
+def flatten_overworld_advance(results, filter_results, filter_function):
+
+
+    return [results]

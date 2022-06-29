@@ -75,6 +75,10 @@ def begg():
 def btid():
     return render_template('pages/b_tid.html', title='TID Checker', bdsp="true")
 
+@app.route("/overworld")
+def owrng():
+    return render_template('pages/overworld.html', title='Overworld Checker', swsh="true")
+
 
 # API ROUTES
 
@@ -311,6 +315,50 @@ def check_bdsp_tid():
     
     return { "results": flatten_bdsp_stationary(results, False) }
 
+@app.route('/api/pop-location', methods=['POST'])
+def pop_location():
+
+    results = swsh.populate_location(request.json['type'], request.json['version'])
+
+    return { "results": results}
+
+@app.route('/api/pop-weather', methods=['POST'])
+def pop_weather():
+
+    results = swsh.populate_weather(request.json['loc'], request.json['type'], request.json['version'])
+
+    return { "results": results}
+
+@app.route('/api/pop-species', methods=['POST'])
+def pop_species():
+
+    results = swsh.populate_species(request.json['weather'], request.json['loc'], request.json['type'], request.json['version'])
+
+    return { "results": results}
+
+@app.route('/api/pop-options', methods=['POST'])
+def pop_options():
+
+    results = swsh.autofill(request.json['weather'], request.json['loc'], request.json['type'], request.json['version'], request.json['species'])
+
+    return { "results": results}
+
+@app.route('/api/check-overworld', methods=['POST'])
+def check_ow():
+
+    states = [request.json['s0'], request.json['s1']]
+
+    #filters = Filter(None, None, None, "Star/Square", request.json['filter']['slot_min'], request.json['filter']['slot_max'], None, None, None, None, None, None, None, None)
+
+    filters = Filter(request.json['filter']['minivs'], request.json['filter']['maxivs'], None, request.json['filter']['shiny_filter'] if request.json['filter']['shiny_filter'] != "None" else None,
+                    request.json['filter']['slot_min'], request.json['filter']['slot_max'], None, None, request.json['filter']['brilliant'], None,
+                    None, None, None, None)
+
+    results = swsh.check_overworld_seed(states, filters, request.json['options'], request.json['initadv'], request.json['maxadv'], request.json['info'])
+
+    #return { "results":  [results] }
+    return { "results": flatten_overworld(results, False)}
+    
 """
 # Legacy routes used by bots
 from .app.legacy import *
