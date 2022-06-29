@@ -11,7 +11,7 @@ from .pla.filters import *
 from .bdsp.data.data_utils import flatten_ug, flatten_bdsp_stationary
 from .swsh import *
 from .bdsp import *
-from pla.rng import Filter
+from .pla.rng import Filter
 
 mimetypes.add_type('application/javascript', '.js')
 mimetypes.add_type('application/javascript', '.mjs')
