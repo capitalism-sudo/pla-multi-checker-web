@@ -150,16 +150,6 @@ html {
   --shadow-strength: var(--shadow-strength-dark);
 }
 
-input[type="text"],
-input[type="number"],
-select {
-  color: var(--text1);
-  background-color: var(--gray-9);
-  padding: var(--spacing1) var(--spacing2);
-  border: 2px solid var(--surface3);
-  border-radius: var(--corner-roundness1);
-}
-
 /* @group Base */
 .chosen-container {
   position: relative;
