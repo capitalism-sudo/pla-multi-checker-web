@@ -6,7 +6,7 @@ import {
   showModalMessage,
   clearMessages,
   clearModalMessages,
-  doSearch,
+  doSearchNS,
   showNoResultsFound,
   saveIntToStorage,
   readIntFromStorage,
@@ -223,7 +223,7 @@ function getSelectValues(select) {
 }
 
 function checkRoamer() {
-  doSearch(
+  doSearchNS(
     "/api/check-bdsp-roamer",
     results,
     getOptions(),

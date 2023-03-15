@@ -6,7 +6,7 @@ import {
     showModalMessage,
     clearMessages,
     clearModalMessages,
-    doSearch,
+    doSearchNS,
     showNoResultsFound,
     saveIntToStorage,
     readIntFromStorage,
@@ -255,7 +255,7 @@ import {
   }
   
   function checkStatic() {
-    doSearch(
+    doSearchNS(
       "/api/check-gen3-static",
       results,
       getOptions(),

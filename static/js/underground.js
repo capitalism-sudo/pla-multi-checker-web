@@ -6,7 +6,7 @@ import {
   showModalMessage,
   clearMessages,
   clearModalMessages,
-  doSearch,
+  doSearchNS,
   showNoResultsFound,
   saveIntToStorage,
   readIntFromStorage,
@@ -265,7 +265,7 @@ function getOptions() {
 }
 
 function checkUnderground() {
-  doSearch(
+  doSearchNS(
     "/api/check-underground",
     results,
     getOptions(),
@@ -275,7 +275,7 @@ function checkUnderground() {
 }
 
 function checkUndergroundTest() {
-  doSearch(
+  doSearchNS(
     "/api/check-underground-test",
     results,
     getOptions(),

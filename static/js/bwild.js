@@ -6,7 +6,7 @@ import {
   showModalMessage,
   clearMessages,
   clearModalMessages,
-  doSearch,
+  doSearchNS,
   showNoResultsFound,
   saveIntToStorage,
   readIntFromStorage,
@@ -274,7 +274,7 @@ function getOptions() {
 }
 
 function checkWild() {
-  doSearch(
+  doSearchNS(
     "/api/check-bdsp-wild",
     results,
     getOptions(),

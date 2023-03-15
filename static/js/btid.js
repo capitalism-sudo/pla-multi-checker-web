@@ -6,7 +6,7 @@ import {
   showModalMessage,
   clearMessages,
   clearModalMessages,
-  doSearch,
+  doSearchNS,
   showNoResultsFound,
   saveIntToStorage,
   readIntFromStorage,
@@ -172,7 +172,7 @@ function getOptions() {
 }
 
 function checkTid() {
-  doSearch(
+  doSearchNS(
     "/api/check-bdsp-tid",
     results,
     getOptions(),

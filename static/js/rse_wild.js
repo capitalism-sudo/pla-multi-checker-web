@@ -1,5 +1,5 @@
 import {
-    doSearch,
+    doSearchNS,
     showNoResultsFound,
     setupExpandables,
     showPokemonIVs,
@@ -337,7 +337,7 @@ import {
   }
   
   function checkOverworld() {
-    doSearch("/api/g3-check-wilds", results, getOptions(), showFilteredResults, checkOwButton);
+    doSearchNS("/api/g3-check-wilds", results, getOptions(), showFilteredResults, checkOwButton);
   }
   
   function showFilteredResults() {

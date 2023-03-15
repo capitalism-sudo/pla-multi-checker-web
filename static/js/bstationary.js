@@ -6,7 +6,7 @@ import {
   showModalMessage,
   clearMessages,
   clearModalMessages,
-  doSearch,
+  doSearchNS,
   showNoResultsFound,
   saveIntToStorage,
   readIntFromStorage,
@@ -256,7 +256,7 @@ function getOptions() {
 }
 
 function checkStationary() {
-  doSearch(
+  doSearchNS(
     "/api/check-bdsp-stationary",
     results,
     getOptions(),

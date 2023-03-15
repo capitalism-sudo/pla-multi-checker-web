@@ -6,7 +6,7 @@ import {
   showModalMessage,
   clearMessages,
   clearModalMessages,
-  doSearch,
+  doSearchNS,
   showNoResultsFound,
   saveIntToStorage,
   readIntFromStorage,
@@ -277,7 +277,7 @@ function getOptions() {
 }
 
 function checkEgg() {
-  doSearch(
+  doSearchNS(
     "/api/check-bdsp-egg",
     results,
     getOptions(),
