@@ -1,5 +1,5 @@
 import {
-  doSearch,
+  doSearchNS,
   showNoResultsFound,
   saveIntToStorage,
   readIntFromStorage,
@@ -128,7 +128,7 @@ function getOptions() {
 }
 
 function checkAlphaAdv() {
-  doSearch("/api/check-alphaseed", results, getOptions(), showFilteredResults);
+  doSearchNS("/api/check-alphaseed", results, getOptions(), showFilteredResults);
 }
 
 function showFilteredResults() {
