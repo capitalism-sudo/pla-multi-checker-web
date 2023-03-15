@@ -12,7 +12,7 @@ export const PREFERENCES_VERSION = 1;
 export function initializeApp(page) {
   checkPreferencesVersion();
 
-  if (page !== "settings") {
+  if ((page !== "settings") && (page != "spawns") && (page != "gen3")) {
     checkForResearch();
   }
 }

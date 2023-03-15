@@ -36,7 +36,6 @@ dayNight.addEventListener("change", setSpawners);
 const checkAlphaAdvButton = document.getElementById("pla-button-checkalphaadv");
 checkAlphaAdvButton.addEventListener("click", checkAlphaAdv);
 
-initializeApp("spawns");
 loadPreferences();
 setupPreferenceSaving();
 setupExpandables();
